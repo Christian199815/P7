@@ -427,7 +427,7 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/FPS/Art/Materials/Level
   m_LastFoldersGridSize: 90
-  m_LastProjectPath: D:\Periode 7\Project\repo\Platformer
+  m_LastProjectPath: C:\Users\31629\GitHub\P7\projectplatformer
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
