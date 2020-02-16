@@ -1,5 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
+using System.Text;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +12,45 @@ using UnityEngine.UI;
 /// </summary>
 public class CustomClient : Client
 {
-    public Text t;
+    public GameObject connectPanel;
+    public Text inputText;
+    public Button connectButton;
+    public TextMeshProUGUI connectionStatus;
+
+    public Vector2 axis;
 
     //Set UI interactable properties
     private void Awake()
     {
-        base.StartClient();
+        //connectButton.onClick.AddListener(() => StartConnection());
+        base.OnClientStarted += ClientStarted;
+        base.OnClientClosed += ClientClosed;
+
+        //StartConnection();
+        connectButton.onClick.AddListener(() => StartConnection());
+
+    }
+    public void StartConnection()
+    {
+        if (ipAddress.Length <= 3)
+        {
+            connectionStatus.text = "Invalid IP!";
+            return;
+        }
+
+        base.ipAddress = inputText.text;
+        connectButton.interactable = false;
+        base.StartClient(connectionStatus);
+    }
+    private void ClientClosed()
+    {
+        connectButton.interactable = true;
+        connectPanel.SetActive(true);
+        connectionStatus.text = "Connection closed";
+    }
+    private void ClientStarted()
+    {
+        connectPanel.SetActive(false);
     }
 
     private void OnDisable()
@@ -21,34 +58,9 @@ public class CustomClient : Client
         SendCloseToServer();
     }
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-         SendMessageToServer();
-    }
-
-    private void SendMessageToServer()
-    {
-        string newMsg = "Test message ;0 "+ Time.time;
-        base.SendMessageToServer(newMsg);
-    }
 
     private void SendCloseToServer()
     {
         base.SendMessageToServer("Close");
     }
-
-    //Custom Client Log
-    #region ClientLog
-    protected override void ClientLog(string msg, Color color)
-    {
-        base.ClientLog(msg, color);
-        t.text += '\n' + "<color=#" + ColorUtility.ToHtmlStringRGBA(color) + ">- " + msg + "</color>";
-    }
-    protected override void ClientLog(string msg)
-    {
-        base.ClientLog(msg);
-        t.text += '\n' + "- " + msg;
-    }
-    #endregion
 }

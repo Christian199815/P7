@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Net.Sockets;
 using System.Text;
+using TMPro;
 using UnityEngine;
+using System.Net;
 
 /// <summary>
 /// Client class shows how to implement and use TcpClient in Unity.
@@ -11,14 +13,14 @@ public class Client : MonoBehaviour
 {
     #region Public Variables
     [Header("Network")]
-    public string ipAddress = "127.0.0.1";
+    public string ipAddress = "";
     public int port = 54010;
     public float waitingMessagesFrequency = 2;
     #endregion
 
     #region Private m_Variables
     private TcpClient m_Client;
-    private NetworkStream m_NetStream = null;
+    protected NetworkStream m_NetStream = null;
     private byte[] m_Buffer = new byte[49152];
     private int m_BytesReceived = 0;
     private string m_ReceivedMessage = "";
@@ -30,32 +32,41 @@ public class Client : MonoBehaviour
     protected Action OnClientClosed = null;    //Delegate triggered when client close
     #endregion
 
-    //Start client and stablish connection with server
-    protected void StartClient()
+    protected bool GetClientActive()
     {
+        if (m_Client == null) return false;
+        return m_Client.Connected;
+    }
+
+    protected void StartClient(TextMeshProUGUI statusText)
+    {
+        statusText.text = "Connecting...";
         //Early out
-        if(m_Client != null)
+        if (m_Client != null)
         {
-            ClientLog("There is already a runing client", Color.red);
+            statusText.text = "Connection already established...";
             return;
         }
-        
+
         try
         {
+            IPAddress ipAd = IPAddress.Parse(ipAddress);
             //Create new client
             m_Client = new TcpClient();
             //Set and enable client
-            m_Client.Connect(ipAddress, port);
-            ClientLog("Client Started", Color.green);
+            m_Client.ConnectAsync(ipAd, port);
+            
+            statusText.text = "Connected!";
             OnClientStarted?.Invoke();
 
             //Start Listening Server Messages coroutine
             m_ListenServerMsgsCoroutine = ListenServerMessages();
             StartCoroutine(m_ListenServerMsgsCoroutine);
+            StartCoroutine(ConnectionCheck());
         }
         catch (SocketException)
         {
-            ClientLog("Socket Exception: Start Server first", Color.red);
+            statusText.text = "Couldnt find a server on given IP!";
             CloseClient();
         }        
     }
@@ -88,31 +99,34 @@ public class Client : MonoBehaviour
 
         }while(m_BytesReceived >= 0 && m_NetStream != null);
         //The communication is over
-        //CloseClient();
+        CloseClient();
     }
 
     //What to do with the received message on client
     protected virtual void OnMessageReceived(string receivedMessage)
     {
-        ClientLog("Msg recived on Client: " + "<b>" + receivedMessage + "</b>", Color.green);
+        print("Message!");
+        //ClientLog(receivedMessage + "</b>", Color.green);
         switch (m_ReceivedMessage)
         {
-            case "Close":
+            case "Server_Close":
                 CloseClient();
+                print("Close Message!");
                 break;
             default:
-                ClientLog("Received message " + receivedMessage + ", has no special behaviuor", Color.red);
+                ClientLog(receivedMessage + ", has no special behaviuor", Color.red);
                 break;
         }
     }
 
     //Send custom string msg to server
-    protected void SendMessageToServer(string sendMsg)
+    public void SendMessageToServer(string sendMsg)
     {
-        //early out if there is nothing connected       
+        //early out if there is nothing connected    
+        if (m_Client == null) return;
         if (!m_Client.Connected)
         {
-            ClientLog("Socket Error: Stablish Server connection first", Color.red);
+            ClientLog("Error: Stablish Server connection first", Color.red);
             return;
         }
 
@@ -120,7 +134,6 @@ public class Client : MonoBehaviour
         byte[] msg = Encoding.ASCII.GetBytes(sendMsg); //Encode message as bytes
         //Start Sync Writing
         m_NetStream.Write(msg, 0, msg.Length);
-        ClientLog("Msg sended to Server: " + "<b>"+sendMsg+"</b>", Color.blue);
     }
 
     //AsyncCallback called when "BeginRead" is ended, waiting the message response from server
@@ -135,12 +148,19 @@ public class Client : MonoBehaviour
     }
     #endregion
 
+    private IEnumerator ConnectionCheck()
+    {
+        while (m_Client.Connected)
+        {
+            yield return new WaitForSeconds(1);
+        }
+        CloseClient();
+    }
+
     #region Close Client
     //Close client connection
     private void CloseClient()
     {
-        ClientLog("Client Closed", Color.red);
-
         //Reset everything to defaults        
         if (m_Client.Connected)        
             m_Client.Close();
@@ -148,6 +168,7 @@ public class Client : MonoBehaviour
         if(m_Client != null)
             m_Client = null;
 
+        StopAllCoroutines();
         OnClientClosed?.Invoke();
     }
     #endregion
