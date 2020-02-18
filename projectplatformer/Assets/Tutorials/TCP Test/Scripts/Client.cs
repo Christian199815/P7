@@ -31,6 +31,11 @@ public class Client : MonoBehaviour
     #endregion
 
     //Start client and stablish connection with server
+
+    private void OnDisable()
+    {
+        CloseClient();
+    }
     protected void StartClient()
     {
         //Early out
@@ -74,16 +79,14 @@ public class Client : MonoBehaviour
         //Start Async Reading from Server and manage the response on MessageReceived function
         do
         {
-            ClientLog("Client is listening server msg...", Color.yellow);
             //Start Async Reading from Server and manage the response on MessageReceived function
             m_NetStream.BeginRead(m_Buffer, 0, m_Buffer.Length, MessageReceived, null);
 
-            if(m_BytesReceived > 0)
+            if (m_BytesReceived > 0)
             {
                 OnMessageReceived(m_ReceivedMessage);
                 m_BytesReceived = 0;
             }
-
             yield return new WaitForSeconds(waitingMessagesFrequency);
 
         }while(m_BytesReceived >= 0 && m_NetStream != null);

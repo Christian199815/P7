@@ -1,18 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 /// <summary>
 /// This Server inheritated class acts like Server using UI elements like buttons and input fields.
 /// </summary>
 public class CustomServer : Server
 {
-
+    public TextMeshProUGUI ipDisplayText;
     //Set UI interactable properties
     protected virtual void Awake()
     {
+        base.ipAdress = LocalIPAddress();
+        ipDisplayText.text = base.ipAdress;
         StartServer();
+    }
+
+    private void OnDisable()
+    {
+        CloseServer();
     }
 
     //Start server and wait for clients
@@ -50,4 +60,19 @@ public class CustomServer : Server
         print(msg);
     }
     #endregion
+
+    public static string LocalIPAddress()
+    {
+        IPHostEntry host;
+        host = Dns.GetHostEntry(Dns.GetHostName());
+        List<string> ips = new List<string>();
+        foreach (IPAddress ip in host.AddressList)
+        {
+            if (ip.AddressFamily == AddressFamily.InterNetwork)
+            {
+                ips.Add(ip.ToString());
+            }
+        }
+        return ips[ips.Count - 1];
+    }
 }

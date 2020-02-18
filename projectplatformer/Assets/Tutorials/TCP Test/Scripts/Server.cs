@@ -63,6 +63,7 @@ public class Server : MonoBehaviour
     {
         //set the client reference
         m_Client = m_Server.EndAcceptTcpClient(res);
+        print("Client connected!");
         OnClientConnected?.Invoke();
     }
 
@@ -80,7 +81,6 @@ public class Server : MonoBehaviour
         //While there is a connection with the client, await for messages
         do
         {
-            ServerLog("Server is listening client msg...", Color.yellow);
             //Start Async Reading from Client and manage the response on MessageReceived function
             m_NetStream.BeginRead(m_Buffer, 0, m_Buffer.Length, MessageReceived,  m_NetStream);
 
@@ -101,7 +101,6 @@ public class Server : MonoBehaviour
     //What to do with the received message on server
     protected virtual void OnMessageReceived(string receivedMessage)
     {
-        ServerLog("Msg recived on Server: " + "<b>" + receivedMessage + "</b>", Color.green);
         switch (receivedMessage)
         {
             case "Close":
@@ -111,7 +110,7 @@ public class Server : MonoBehaviour
                 CloseClientConnection();
                 break;
             default:
-                ServerLog("Received message " + receivedMessage + ", has no special behaviuor", Color.red);
+                print(receivedMessage);
                 break;
         }
     }
@@ -141,6 +140,8 @@ public class Server : MonoBehaviour
             //build message received from client
             m_BytesReceived = m_NetStream.EndRead(result);                              //End async reading
             m_ReceivedMessage = Encoding.ASCII.GetString(m_Buffer, 0, m_BytesReceived); //De-encode message as string
+
+           
         }
     }
     #endregion    
@@ -149,6 +150,7 @@ public class Server : MonoBehaviour
     //Close client connection and disables the server
     protected virtual void CloseServer()
     {
+        SendMessageToClient("Server_Close");
         ServerLog("Server Closed", Color.red);
         //Close client connection
         if (m_Client != null)
@@ -164,7 +166,7 @@ public class Server : MonoBehaviour
             m_Server.Stop();
             m_Server = null;
         }
-
+        
         OnServerClosed?.Invoke();
     }
 
@@ -187,12 +189,12 @@ public class Server : MonoBehaviour
     //Custom Server Log - With Text Color
     protected virtual void ServerLog(string msg, Color color)
     {
-        Debug.Log("<b>Server:</b> " + msg);
+       print(msg);
     }
     //Custom Server Log - Without Text Color
     protected virtual void ServerLog(string msg)
     {
-        Debug.Log("<b>Server:</b> " + msg);
+        print(msg);
     }
     #endregion
 
