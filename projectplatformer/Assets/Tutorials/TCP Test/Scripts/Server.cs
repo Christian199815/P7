@@ -33,9 +33,12 @@ public class Server : MonoBehaviour
     protected Action OnClientConnected = null;  //Delegate triggered when the server stablish connection with client
     #endregion
 
+    InputManager iMan;
+
     //Start server and wait for clients
     protected virtual void StartServer()
-    {        
+    {
+        iMan = GetComponent<InputManager>();
         //Set and enable Server 
         IPAddress ip = IPAddress.Parse(ipAdress);
         m_Server = new TcpListener(ip, port);
@@ -110,7 +113,10 @@ public class Server : MonoBehaviour
                 CloseClientConnection();
                 break;
             default:
-                print(receivedMessage);
+               
+                string[] message = receivedMessage.Split('/');
+                iMan.axis.x = float.Parse(message[0]);
+                iMan.axis.y = float.Parse(message[1]);
                 break;
         }
     }

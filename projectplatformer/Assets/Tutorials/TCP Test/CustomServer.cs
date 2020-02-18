@@ -11,12 +11,13 @@ using TMPro;
 /// </summary>
 public class CustomServer : Server
 {
-    public TextMeshProUGUI ipDisplayText;
+    
     //Set UI interactable properties
     protected virtual void Awake()
     {
+        
         base.ipAdress = LocalIPAddress();
-        ipDisplayText.text = base.ipAdress;
+        print(base.ipAdress);
         StartServer();
     }
 

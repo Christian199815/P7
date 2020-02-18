@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     public float jumpForce;
     public float wallJumpForce;
 
-    private Vector2 inputAxis = Vector2.zero;
+    public Vector2 inputAxis = Vector2.zero;
 
     void Start()
     {
@@ -38,7 +38,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        inputAxis = MovementAxis();
+        //inputAxis = MovementAxis();
+        inputAxis = FindObjectOfType<InputManager>().axis;
         
         Movement();
 
@@ -66,14 +67,14 @@ public class Player : MonoBehaviour
 
         jumpsDone += 1;
     }
-    
+
+
     private void Movement()
     { 
         if ((velocity.x > 0 && CollRight) || velocity.x < 0 && CollLeft)
         {
             velocity.x = 0;
         }
-
         if (!CollDown && velocity.y >= -terminalVelocity + gravityScale * Time.deltaTime)
         {
             velocity.y -= gravityScale * Time.deltaTime;

@@ -149,14 +149,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b3a3dbd980fad4ba11c6a39b3fad81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ipAddress: 192.168.43.78
+  ipAddress: 192.168.178.12
   port: 54010
   waitingMessagesFrequency: 1
   connectPanel: {fileID: 2019945639}
   inputText: {fileID: 768551586}
   connectButton: {fileID: 316548491}
   connectionStatus: {fileID: 1429368487}
-  input: {fileID: 572131944}
   axis: {x: 0, y: 0}
 --- !u!4 &23578213
 Transform:

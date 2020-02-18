@@ -40,6 +40,8 @@ public class ControllerInput : MonoBehaviour
         else if (button == left) buttonLeftPressed = true;
 
         ChangeAxis();
+
+        SendData();
     }
 
     public void PointerUp(Button button)
@@ -50,6 +52,8 @@ public class ControllerInput : MonoBehaviour
         else if (button == left) buttonLeftPressed = false;
 
         ChangeAxis();
+
+        SendData();
     }
 
     private void SendData()

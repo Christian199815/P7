@@ -38,15 +38,16 @@ public class CustomClient : Client
             return;
         }
 
-        base.ipAddress = inputText.text;
+        //base.ipAddress = inputText.text;
         connectButton.interactable = false;
         base.StartClient(connectionStatus);
     }
     private void ClientClosed()
     {
+        /*
         connectButton.interactable = true;
         connectPanel.SetActive(true);
-        connectionStatus.text = "Connection closed";
+        connectionStatus.text = "Connection closed";*/
     }
     private void ClientStarted()
     {

@@ -54,7 +54,7 @@ public class Client : MonoBehaviour
             //Create new client
             m_Client = new TcpClient();
             //Set and enable client
-            m_Client.ConnectAsync(ipAd, port);
+            m_Client.Connect(ipAd, port);
             
             statusText.text = "Connected!";
             OnClientStarted?.Invoke();
