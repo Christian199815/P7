@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 135538927}
   - component: {fileID: 135538926}
   m_Layer: 0
-  m_Name: floor (13)
+  m_Name: Ver.Floor4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 154273965}
   - component: {fileID: 154273964}
   m_Layer: 0
-  m_Name: floor (24)
+  m_Name: Hor.Floor10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 230161045}
   - component: {fileID: 230161044}
   m_Layer: 0
-  m_Name: floor (22)
+  m_Name: Ver.Floor11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -868,7 +868,7 @@ GameObject:
   - component: {fileID: 233386739}
   - component: {fileID: 233386738}
   m_Layer: 0
-  m_Name: floor (16)
+  m_Name: Hor.floor5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -960,7 +960,7 @@ GameObject:
   - component: {fileID: 236590491}
   - component: {fileID: 236590490}
   m_Layer: 0
-  m_Name: floor (34)
+  m_Name: Ver.Floor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -980,19 +980,32 @@ Transform:
   m_Father: {fileID: 1491662394}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!65 &236590490
-BoxCollider:
+--- !u!61 &236590490
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236590488}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.0000002, y: 1.0000002}
+  m_EdgeRadius: 0
 --- !u!23 &236590491
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1144,7 +1157,7 @@ GameObject:
   - component: {fileID: 241208997}
   - component: {fileID: 241208996}
   m_Layer: 0
-  m_Name: floor (18)
+  m_Name: Hor.Floor7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1513,7 +1526,7 @@ GameObject:
   - component: {fileID: 381612485}
   - component: {fileID: 381612484}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: Hor.Floor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1533,19 +1546,32 @@ Transform:
   m_Father: {fileID: 1491662394}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &381612484
-BoxCollider:
+--- !u!61 &381612484
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381612482}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.99999994, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &381612485
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1788,9 +1814,10 @@ GameObject:
   - component: {fileID: 426303242}
   - component: {fileID: 426303245}
   - component: {fileID: 426303244}
+  - component: {fileID: 426303246}
   - component: {fileID: 426303243}
   m_Layer: 0
-  m_Name: floor (30)
+  m_Name: Break.Block2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1810,19 +1837,32 @@ Transform:
   m_Father: {fileID: 1470419066}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &426303243
-BoxCollider:
+--- !u!61 &426303243
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426303241}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0000038146973, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &426303244
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1869,6 +1909,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426303241}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &426303246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426303241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c73747d88ed2f47b4078f206841eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &447955010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1880,9 +1932,10 @@ GameObject:
   - component: {fileID: 447955011}
   - component: {fileID: 447955014}
   - component: {fileID: 447955013}
+  - component: {fileID: 447955015}
   - component: {fileID: 447955012}
   m_Layer: 0
-  m_Name: lift
+  m_Name: Platf.Lift
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1902,19 +1955,20 @@ Transform:
   m_Father: {fileID: 1470419066}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &447955012
-BoxCollider:
+--- !u!114 &447955012
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447955010}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e14449db363d48b4d967b1b2837aa840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LiftEndPos: {x: 66.2, y: -33.45, z: 0}
+  LiftDownSpeed: 7
 --- !u!23 &447955013
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1961,6 +2015,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447955010}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!61 &447955015
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447955010}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.00000047683716}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &459212929
 GameObject:
   m_ObjectHideFlags: 0
@@ -2158,7 +2238,7 @@ GameObject:
   - component: {fileID: 487627261}
   - component: {fileID: 487627260}
   m_Layer: 0
-  m_Name: floor (25)
+  m_Name: Hor.Floor11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2526,7 +2606,7 @@ GameObject:
   - component: {fileID: 545964825}
   - component: {fileID: 545964824}
   m_Layer: 0
-  m_Name: floor (21)
+  m_Name: Ver.Floor8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2894,7 +2974,7 @@ GameObject:
   - component: {fileID: 616916802}
   - component: {fileID: 616916801}
   m_Layer: 0
-  m_Name: floor (28)
+  m_Name: Ver.Floor13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3171,7 +3251,7 @@ GameObject:
   - component: {fileID: 672852305}
   - component: {fileID: 672852304}
   m_Layer: 0
-  m_Name: floor (12)
+  m_Name: Ver.Floor5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3263,7 +3343,7 @@ GameObject:
   - component: {fileID: 681083576}
   - component: {fileID: 681083575}
   m_Layer: 0
-  m_Name: floor (11)
+  m_Name: Ver.Floor3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3353,9 +3433,10 @@ GameObject:
   - component: {fileID: 698607682}
   - component: {fileID: 698607685}
   - component: {fileID: 698607684}
+  - component: {fileID: 698607686}
   - component: {fileID: 698607683}
   m_Layer: 0
-  m_Name: floor (32)
+  m_Name: Break.Block4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3375,19 +3456,32 @@ Transform:
   m_Father: {fileID: 1470419066}
   m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &698607683
-BoxCollider:
+--- !u!61 &698607683
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698607681}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0000038146973, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &698607684
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3434,6 +3528,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698607681}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &698607686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698607681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c73747d88ed2f47b4078f206841eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &700149987
 GameObject:
   m_ObjectHideFlags: 0
@@ -3447,7 +3553,7 @@ GameObject:
   - component: {fileID: 700149990}
   - component: {fileID: 700149989}
   m_Layer: 0
-  m_Name: floor (14)
+  m_Name: Ver.Floor6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3537,9 +3643,10 @@ GameObject:
   - component: {fileID: 708754556}
   - component: {fileID: 708754559}
   - component: {fileID: 708754558}
+  - component: {fileID: 708754560}
   - component: {fileID: 708754557}
   m_Layer: 0
-  m_Name: floor (29)
+  m_Name: Break.Block1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3559,19 +3666,32 @@ Transform:
   m_Father: {fileID: 1470419066}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &708754557
-BoxCollider:
+--- !u!61 &708754557
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708754555}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &708754558
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3618,6 +3738,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 708754555}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &708754560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708754555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c73747d88ed2f47b4078f206841eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &754667399
 GameObject:
   m_ObjectHideFlags: 0
@@ -3631,7 +3763,7 @@ GameObject:
   - component: {fileID: 754667402}
   - component: {fileID: 754667401}
   m_Layer: 0
-  m_Name: floor
+  m_Name: Hor.Floor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3651,19 +3783,32 @@ Transform:
   m_Father: {fileID: 1053320669}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &754667401
-BoxCollider:
+--- !u!61 &754667401
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 754667399}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00000011920929, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &754667402
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3815,7 +3960,7 @@ GameObject:
   - component: {fileID: 806519128}
   - component: {fileID: 806519127}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Tilt.Floor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3835,19 +3980,32 @@ Transform:
   m_Father: {fileID: 921423632}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -50}
---- !u!65 &806519127
-BoxCollider:
+--- !u!61 &806519127
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806519125}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00000011920929, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.0000002, y: 1.0000001}
+  m_EdgeRadius: 0
 --- !u!23 &806519128
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4091,7 +4249,7 @@ GameObject:
   - component: {fileID: 884901262}
   - component: {fileID: 884901261}
   m_Layer: 0
-  m_Name: floor (19)
+  m_Name: Hor.Floor6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4401,7 +4559,7 @@ GameObject:
   - component: {fileID: 934811328}
   - component: {fileID: 934811327}
   m_Layer: 0
-  m_Name: platform (2)
+  m_Name: Platf.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4421,19 +4579,32 @@ Transform:
   m_Father: {fileID: 1491662394}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &934811327
-BoxCollider:
+--- !u!61 &934811327
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934811325}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.000000074505806, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &934811328
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5370,7 +5541,7 @@ GameObject:
   - component: {fileID: 1223145680}
   - component: {fileID: 1223145679}
   m_Layer: 0
-  m_Name: floor (20)
+  m_Name: Ver.Floor9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5552,9 +5723,10 @@ GameObject:
   - component: {fileID: 1241313224}
   - component: {fileID: 1241313227}
   - component: {fileID: 1241313226}
+  - component: {fileID: 1241313228}
   - component: {fileID: 1241313225}
   m_Layer: 0
-  m_Name: floor (4)
+  m_Name: Small.Targ.4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5574,19 +5746,32 @@ Transform:
   m_Father: {fileID: 1053320669}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1241313225
-BoxCollider:
+--- !u!61 &1241313225
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241313223}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &1241313226
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5633,6 +5818,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241313223}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1241313228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241313223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c73747d88ed2f47b4078f206841eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1287698508
 GameObject:
   m_ObjectHideFlags: 0
@@ -5738,7 +5935,7 @@ GameObject:
   - component: {fileID: 1312349025}
   - component: {fileID: 1312349024}
   m_Layer: 0
-  m_Name: platform (1)
+  m_Name: Platf.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5758,19 +5955,32 @@ Transform:
   m_Father: {fileID: 1491662394}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1312349024
-BoxCollider:
+--- !u!61 &1312349024
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312349022}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000023841858, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &1312349025
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6196,9 +6406,10 @@ GameObject:
   - component: {fileID: 1469885830}
   - component: {fileID: 1469885833}
   - component: {fileID: 1469885832}
+  - component: {fileID: 1469885834}
   - component: {fileID: 1469885831}
   m_Layer: 0
-  m_Name: floor (1)
+  m_Name: Small.Targ.3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6218,19 +6429,32 @@ Transform:
   m_Father: {fileID: 1053320669}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1469885831
-BoxCollider:
+--- !u!61 &1469885831
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469885829}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &1469885832
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6277,6 +6501,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469885829}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1469885834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469885829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c73747d88ed2f47b4078f206841eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1470419065
 GameObject:
   m_ObjectHideFlags: 0
@@ -6353,7 +6589,7 @@ GameObject:
   - component: {fileID: 1472184267}
   - component: {fileID: 1472184266}
   m_Layer: 0
-  m_Name: floor (26)
+  m_Name: Hor.Floor9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6479,9 +6715,10 @@ GameObject:
   - component: {fileID: 1507686519}
   - component: {fileID: 1507686522}
   - component: {fileID: 1507686521}
+  - component: {fileID: 1507686523}
   - component: {fileID: 1507686520}
   m_Layer: 0
-  m_Name: floor (31)
+  m_Name: Break.Block3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6501,19 +6738,32 @@ Transform:
   m_Father: {fileID: 1470419066}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1507686520
-BoxCollider:
+--- !u!61 &1507686520
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507686518}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &1507686521
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6560,6 +6810,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507686518}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1507686523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507686518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c73747d88ed2f47b4078f206841eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1550462492
 GameObject:
   m_ObjectHideFlags: 0
@@ -6571,9 +6833,10 @@ GameObject:
   - component: {fileID: 1550462493}
   - component: {fileID: 1550462496}
   - component: {fileID: 1550462495}
+  - component: {fileID: 1550462497}
   - component: {fileID: 1550462494}
   m_Layer: 0
-  m_Name: floor (33)
+  m_Name: Break.Block5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6593,19 +6856,32 @@ Transform:
   m_Father: {fileID: 1470419066}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1550462494
-BoxCollider:
+--- !u!61 &1550462494
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550462492}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &1550462495
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6652,6 +6928,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550462492}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1550462497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550462492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c73747d88ed2f47b4078f206841eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1591328284
 GameObject:
   m_ObjectHideFlags: 0
@@ -6665,7 +6953,7 @@ GameObject:
   - component: {fileID: 1591328287}
   - component: {fileID: 1591328286}
   m_Layer: 0
-  m_Name: door1
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6757,7 +7045,7 @@ GameObject:
   - component: {fileID: 1594670318}
   - component: {fileID: 1594670317}
   m_Layer: 0
-  m_Name: floor (15)
+  m_Name: Hor.Floor4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6939,6 +7227,7 @@ GameObject:
   - component: {fileID: 1603756266}
   - component: {fileID: 1603756269}
   - component: {fileID: 1603756268}
+  - component: {fileID: 1603756270}
   - component: {fileID: 1603756267}
   m_Layer: 0
   m_Name: Pressure Plate
@@ -6961,19 +7250,20 @@ Transform:
   m_Father: {fileID: 1470419066}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1603756267
-BoxCollider:
+--- !u!114 &1603756267
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603756265}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b241d4ee8f7d0a94988045ffc8bc7ce3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HiddenPlatform: {fileID: 1041887382}
+  speed: 0
 --- !u!23 &1603756268
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7020,6 +7310,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603756265}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!61 &1603756270
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603756265}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1604102304
 GameObject:
   m_ObjectHideFlags: 0
@@ -7033,7 +7349,7 @@ GameObject:
   - component: {fileID: 1604102307}
   - component: {fileID: 1604102306}
   m_Layer: 0
-  m_Name: floor (17)
+  m_Name: Ver.Floor7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7125,7 +7441,7 @@ GameObject:
   - component: {fileID: 1605163628}
   - component: {fileID: 1605163627}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Hor.Floor2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7145,19 +7461,32 @@ Transform:
   m_Father: {fileID: 921423632}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1605163627
-BoxCollider:
+--- !u!61 &1605163627
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605163625}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &1605163628
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7215,9 +7544,10 @@ GameObject:
   - component: {fileID: 1619078243}
   - component: {fileID: 1619078246}
   - component: {fileID: 1619078245}
+  - component: {fileID: 1619078247}
   - component: {fileID: 1619078244}
   m_Layer: 0
-  m_Name: floor (3)
+  m_Name: Small.Targ.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7237,19 +7567,32 @@ Transform:
   m_Father: {fileID: 1053320669}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1619078244
-BoxCollider:
+--- !u!61 &1619078244
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619078242}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &1619078245
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7296,6 +7639,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619078242}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1619078247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619078242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c73747d88ed2f47b4078f206841eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1648506004
 GameObject:
   m_ObjectHideFlags: 0
@@ -7309,7 +7664,7 @@ GameObject:
   - component: {fileID: 1648506007}
   - component: {fileID: 1648506006}
   m_Layer: 0
-  m_Name: platform
+  m_Name: Platf.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7329,19 +7684,32 @@ Transform:
   m_Father: {fileID: 1491662394}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1648506006
-BoxCollider:
+--- !u!61 &1648506006
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648506004}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &1648506007
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7585,7 +7953,7 @@ GameObject:
   - component: {fileID: 1753929079}
   - component: {fileID: 1753929078}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: Tilt.Floor2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7605,19 +7973,32 @@ Transform:
   m_Father: {fileID: 921423632}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -50}
---- !u!65 &1753929078
-BoxCollider:
+--- !u!61 &1753929078
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753929076}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.000000059604645, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.0000002, y: 1.0000001}
+  m_EdgeRadius: 0
 --- !u!23 &1753929079
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7697,19 +8078,32 @@ Transform:
   m_Father: {fileID: 1470419066}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1762979893
-BoxCollider:
+--- !u!61 &1762979893
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762979891}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &1762979894
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7892,7 +8286,7 @@ GameObject:
   - component: {fileID: 1855674877}
   - component: {fileID: 1855674876}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Hor.Floor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8181,7 +8575,7 @@ GameObject:
   - component: {fileID: 1880146639}
   - component: {fileID: 1880146638}
   m_Layer: 0
-  m_Name: floor (27)
+  m_Name: Ver.Floor10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8457,7 +8851,7 @@ GameObject:
   - component: {fileID: 1898995301}
   - component: {fileID: 1898995300}
   m_Layer: 0
-  m_Name: floor (7)
+  m_Name: Ver.Floor2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8547,9 +8941,10 @@ GameObject:
   - component: {fileID: 1906743482}
   - component: {fileID: 1906743485}
   - component: {fileID: 1906743484}
+  - component: {fileID: 1906743486}
   - component: {fileID: 1906743483}
   m_Layer: 0
-  m_Name: floor (2)
+  m_Name: Small.Targ.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8569,19 +8964,32 @@ Transform:
   m_Father: {fileID: 1053320669}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1906743483
-BoxCollider:
+--- !u!61 &1906743483
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906743481}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &1906743484
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8628,6 +9036,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906743481}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1906743486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906743481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7c73747d88ed2f47b4078f206841eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1979309836
 GameObject:
   m_ObjectHideFlags: 0
@@ -8733,7 +9153,7 @@ GameObject:
   - component: {fileID: 2034062919}
   - component: {fileID: 2034062918}
   m_Layer: 0
-  m_Name: platform (3)
+  m_Name: Platf.4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8753,19 +9173,32 @@ Transform:
   m_Father: {fileID: 1491662394}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2034062918
-BoxCollider:
+--- !u!61 &2034062918
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034062916}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000023841858, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!23 &2034062919
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9010,7 +9443,7 @@ GameObject:
   - component: {fileID: 2063172803}
   - component: {fileID: 2063172802}
   m_Layer: 0
-  m_Name: floor (23)
+  m_Name: Hor.Floor8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

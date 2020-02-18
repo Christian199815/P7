@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class LiftCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Vector3 LiftEndPos;
+    public float LiftDownSpeed;
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.collider.CompareTag("Player"))
+        {
+            transform.position = Vector3.MoveTowards(transform.position, LiftEndPos, LiftDownSpeed);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
