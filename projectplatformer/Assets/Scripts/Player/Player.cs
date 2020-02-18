@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
 
     private bool CollUp;
     private bool CollRight;
-    private bool CollDown;
-    public bool CollLeft;
+    public bool CollDown;
+    private bool CollLeft;
 
     public int maxJumps;
     private int jumpsDone;
