@@ -6,11 +6,13 @@ public class PressurePlate : MonoBehaviour
 {
     public GameObject HiddenPlatform;
     public float speed;
+    private Vector3 HiddenPlatformDesPos;
     private Vector3 HiddenPlatformOrgPos;
 
     private void Start()
     {
-        
+        HiddenPlatformOrgPos = HiddenPlatform.transform.position;
+        HiddenPlatformDesPos = new Vector3(39.8f, 1.5f, 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -18,7 +20,7 @@ public class PressurePlate : MonoBehaviour
         if(collision.collider.CompareTag("Player") || collision.collider.CompareTag("Box"))
         {
             Debug.Log("Input Detected!");
-            HiddenPlatform.transform.position = Vector3.MoveTowards(HiddenPlatform.transform.position, new Vector3(39.65f, 2, 0), (speed * Time.deltaTime));
+            HiddenPlatform.transform.position = Vector3.Lerp(HiddenPlatform.transform.position, HiddenPlatformDesPos, (speed * Time.deltaTime));
         }
 
     }
