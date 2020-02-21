@@ -17,7 +17,8 @@ public class PressurePlate : MonoBehaviour
     {
         if(collision.collider.CompareTag("Player") || collision.collider.CompareTag("Box"))
         {
-            HiddenPlatform.transform.position = new Vector2(transform.position.x - (speed * Time.deltaTime), transform.position.y);
+            Debug.Log("Input Detected!");
+            HiddenPlatform.transform.position = Vector3.MoveTowards(HiddenPlatform.transform.position, new Vector3(39.65f, 2, 0), (speed * Time.deltaTime));
         }
 
     }

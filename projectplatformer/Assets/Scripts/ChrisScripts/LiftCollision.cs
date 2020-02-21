@@ -12,7 +12,7 @@ public class LiftCollision : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            transform.position = Vector3.MoveTowards(transform.position, LiftEndPos, LiftDownSpeed);
+            transform.position = Vector3.Lerp(transform.position, LiftEndPos, Mathf.SmoothStep(0, 1, 12));
         }
     }
 
