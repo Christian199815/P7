@@ -114,9 +114,14 @@ public class Server : MonoBehaviour
                 break;
             default:
                
-                string[] message = receivedMessage.Split('/');
-                iMan.axis.x = float.Parse(message[0]);
-                iMan.axis.y = float.Parse(message[1]);
+                
+                if (iMan.inputType == InputType.MobileController)
+                {
+                    string[] message = receivedMessage.Split('/');
+                    iMan.axis.x = float.Parse(message[0]);
+                    iMan.axis.y = float.Parse(message[1]);
+                }
+
                 break;
         }
     }

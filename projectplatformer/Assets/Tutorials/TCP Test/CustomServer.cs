@@ -15,7 +15,6 @@ public class CustomServer : Server
     //Set UI interactable properties
     protected virtual void Awake()
     {
-        
         base.ipAdress = LocalIPAddress();
         print(base.ipAdress);
         StartServer();
@@ -52,7 +51,6 @@ public class CustomServer : Server
     protected override void ServerLog(string msg)
     {
         base.ServerLog(msg);
-        print(msg);
     }
     //Without Text Color
     protected override void ServerLog(string msg, Color color)
