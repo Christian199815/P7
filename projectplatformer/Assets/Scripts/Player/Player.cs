@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
 
     public Vector2 inputAxis = Vector2.zero;
 
+    private bool singleInput;
+
     void Start()
     {
         
@@ -42,10 +44,12 @@ public class Player : MonoBehaviour
         
         Movement();
 
-        if (Input.GetKeyDown(KeyCode.Space) && jumpsDone < maxJumps)
+        if (inputAxis.y == 1 && singleInput && jumpsDone < maxJumps)
         {
+            singleInput = false;
             Jump();
         }
+        if (inputAxis.y != 1) singleInput = true;
         
 
         transform.Translate(velocity * Time.deltaTime);

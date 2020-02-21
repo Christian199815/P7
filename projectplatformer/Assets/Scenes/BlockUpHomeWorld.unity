@@ -3780,6 +3780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2c7efc0d8f983488834e731cd480a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputType: 0
   axis: {x: 0, y: 0}
 --- !u!4 &711219542
 Transform:

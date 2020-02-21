@@ -23,6 +23,10 @@ public class InputManager : MonoBehaviour
         if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) inputAxis.x = -1;
         if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) inputAxis.x = 1;
         if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) || (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))) inputAxis.x = 0;
+
+        if (Input.GetKey(KeyCode.Space)) inputAxis.y = 1;
+        else if (!Input.GetKey(KeyCode.Space)) inputAxis.y = 0;
+
         inputAxis.x = Mathf.Clamp(inputAxis.x, -1f, 1f);
         inputAxis.y = Mathf.Clamp(inputAxis.y, -1f, 1f);
         return inputAxis;
