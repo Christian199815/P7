@@ -164,7 +164,7 @@ public class Server : MonoBehaviour
         SendMessageToClient("Server_Close");
         ServerLog("Server Closed", Color.red);
         //Close client connection
-        if (m_Client != null)
+        if (m_Client.Connected)
         {
             m_NetStream.Close();
             m_NetStream = null;

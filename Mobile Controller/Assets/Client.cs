@@ -66,8 +66,8 @@ public class Client : MonoBehaviour
         }
         catch (SocketException)
         {
-            statusText.text = "Couldnt find a server on given IP!";
             CloseClient();
+            statusText.text = "Couldnt find a server on given IP!";
         }        
     }
 
