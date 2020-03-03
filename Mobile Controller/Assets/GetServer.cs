@@ -63,8 +63,7 @@ public class GetServer : MonoBehaviour
         m_Server.Start();
         //Wait for async client connection 
         m_Server.BeginAcceptTcpClient(ClientConnected, null);
-        status.text += "\nListener started...";
-        status.text += "\n" + ipAdress;
+        status.text += "Controller ID: " + ipAdress.Split('.')[3];
     }
 
 
