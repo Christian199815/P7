@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
 using UnityEngine;
@@ -32,6 +34,8 @@ public class Server : MonoBehaviour
     protected Action OnServerClosed = null;     //Delegate triggered when server close
     protected Action OnClientConnected = null;  //Delegate triggered when the server stablish connection with client
     #endregion
+
+    
 
     InputManager iMan;
 
@@ -211,5 +215,7 @@ public class Server : MonoBehaviour
         print(msg);
     }
     #endregion
+
+
 
 }

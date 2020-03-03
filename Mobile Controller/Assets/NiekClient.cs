@@ -7,7 +7,6 @@ using System.Net.NetworkInformation;
 using TMPro;
 using System.Text;
 using System;
-
 public class NiekClient : MonoBehaviour
 {
     [SerializeField] private GameObject connectPanel;
@@ -16,6 +15,7 @@ public class NiekClient : MonoBehaviour
 
     private TcpClient activeClient;
 
+    public string connectionIP;
 
     protected NetworkStream m_NetStream = null;
     private byte[] m_Buffer = new byte[49152];
@@ -31,15 +31,17 @@ public class NiekClient : MonoBehaviour
     private IEnumerator ConnectSequence()
     {
         connectPanel.SetActive(true);
+        statusText.text = "Finding server...";
 
-        statusText.text = "Finding servers...";
-        LookForLocalIps();
-        yield return new WaitForSeconds(1);
+        while(connectionIP == string.Empty)
+        {
+            yield return null;
+        }
 
         activeClient = TryToConnect();
         if (activeClient == null)
         {
-            statusText.text = "No servers found!";
+            statusText.text = "Connection error";
             statusText.text += "\nTrying again in 10 seconds...";
             yield return new WaitForSeconds(10);
             StartCoroutine(ConnectSequence());
@@ -55,50 +57,30 @@ public class NiekClient : MonoBehaviour
         }
     }
 
-    private void LookForLocalIps()
-    {
-        adresses = new List<string>();
-        foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
-        {
-            if (ni.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 || ni.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
-            {
-                foreach (UnicastIPAddressInformation ip in ni.GetIPProperties().UnicastAddresses)
-                {
-                    if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
-                    {
-                        adresses.Add(ip.Address.ToString());
-                        statusText.text += "\n" + ip.Address.ToString();
-                    }
-                }
-            }
-        }
-    }
-
     private TcpClient TryToConnect()
     {
         TcpClient _client;
-        foreach (string ip in adresses)
+        try
         {
-            try
+            IPAddress ipAd = IPAddress.Parse(connectionIP);
+            _client = new TcpClient();
+            _client.Connect(ipAd, port);
+            if (_client.Connected)
             {
-                IPAddress ipAd = IPAddress.Parse(ip);
-                _client = new TcpClient();
-                _client.Connect(ipAd, port);
-                if (_client.Connected)
-                {
-                    activeClient = _client;
-                    StartCoroutine(ListenServerMessages());
-                    StartCoroutine(ConnectionCheck());
-                    return _client;
-                }  
+                activeClient = _client;
+                m_NetStream = _client.GetStream();
+                StartCoroutine(ConnectionCheck());
+                return _client;
             }
-            catch (SocketException)
-            {
-                continue;
-            }
+        }
+        catch (SocketException)
+        {
+
         }
         return null;
     }
+
+
 
     private IEnumerator ConnectionCheck()
     {
@@ -120,13 +102,11 @@ public class NiekClient : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(ConnectSequence());
     }
-
     private IEnumerator ListenServerMessages()
     {
-        if (activeClient == null)
-            print("uhh nee?");
-        if (!activeClient.Connected)
-            yield break;
+        if (activeClient != null)
+        {
+
 
         m_NetStream = activeClient.GetStream();
         do
@@ -143,6 +123,7 @@ public class NiekClient : MonoBehaviour
 
         } while (m_BytesReceived >= 0 && m_NetStream != null);
         CloseClient();
+        }
     }
 
     private void MessageReceived(IAsyncResult result)
@@ -156,6 +137,7 @@ public class NiekClient : MonoBehaviour
 
     protected virtual void OnMessageReceived(string receivedMessage)
     {
+        print(receivedMessage);
         if (m_ReceivedMessage == "Server_Close")
         {
             CloseClient();
