@@ -33,16 +33,10 @@ public class Player : MonoBehaviour
 
     private bool singleInput;
 
-    public bool isSwinging;
-    public Vector2 ropeHook;
-    public float swingForce = 4f;
-    private Rigidbody2D rb;
-
-    private void Awake()
+    void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        
     }
-  
 
     private void Update()
     { 
@@ -119,38 +113,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        
-    }
 
-    public void Grappling()
-    {
-        if(inputAxis.x < 0f || inputAxis.x > 0f)
-        {
-            if (isSwinging)
-            {
-                var playerToHookDirection = (ropeHook - (Vector2)transform.position).normalized;
-                Vector2 perpendicularDirection;
-                if (inputAxis.x < 0)
-                {
-                    perpendicularDirection = new Vector2(-playerToHookDirection.y, playerToHookDirection.x);
-                    var leftPerpPos = (Vector2)transform.position - perpendicularDirection * -2f;
-                    Debug.DrawLine(transform.position, leftPerpPos, Color.green, 0f);
-                }
-                else
-                {
-                    perpendicularDirection = new Vector2(playerToHookDirection.y, -playerToHookDirection.x);
-                    var rightPerpPos = (Vector2)transform.position + perpendicularDirection * 2f;
-                    Debug.DrawLine(transform.position, rightPerpPos, Color.green, 0f);
-                }
-
-                var force = perpendicularDirection * swingForce;
-                rb.AddForce(force, ForceMode2D.Force);
-            }
-           
-        }
-    }
 
 
     #region Raycasts
