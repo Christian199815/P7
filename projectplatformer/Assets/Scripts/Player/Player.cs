@@ -134,9 +134,9 @@ public class Player : MonoBehaviour
         Debug.DrawLine(new Vector3(transform.position.x + (transform.lossyScale.x / 4), transform.position.y, transform.position.z), new Vector3(transform.position.x + transform.lossyScale.x / 2, transform.position.y, transform.position.z));
         Debug.DrawLine(new Vector3(transform.position.x + (transform.lossyScale.x / 4), transform.position.y - (transform.lossyScale.y / 3), transform.position.z), new Vector3(transform.position.x + transform.lossyScale.x / 2, transform.position.y - (transform.lossyScale.y / 3), transform.position.z));
 
-        RaycastHit2D[] hitRU = Physics2D.RaycastAll(new Vector3(transform.position.x + (transform.lossyScale.x / 4), transform.position.y + (transform.lossyScale.y / 3)), Vector3.right, transform.lossyScale.x / 4);
-        RaycastHit2D[] hitR = Physics2D.RaycastAll(new Vector3(transform.position.x + (transform.lossyScale.x / 4), transform.position.y), Vector3.right, transform.lossyScale.x / 4);
-        RaycastHit2D[] hitRL = Physics2D.RaycastAll(new Vector3(transform.position.x + (transform.lossyScale.x / 4), transform.position.y - (transform.lossyScale.y / 3)), Vector3.right, transform.lossyScale.x / 4);
+        RaycastHit2D[] hitRU = Physics2D.RaycastAll(new Vector3(transform.position.x + (transform.lossyScale.x / 4), transform.position.y + (transform.lossyScale.y / 3)), Vector3.right, transform.lossyScale.x / 4, ~LayerMask.GetMask("Player"));
+        RaycastHit2D[] hitR = Physics2D.RaycastAll(new Vector3(transform.position.x + (transform.lossyScale.x / 4), transform.position.y), Vector3.right, transform.lossyScale.x / 4, ~LayerMask.GetMask("Player"));
+        RaycastHit2D[] hitRL = Physics2D.RaycastAll(new Vector3(transform.position.x + (transform.lossyScale.x / 4), transform.position.y - (transform.lossyScale.y / 3)), Vector3.right, transform.lossyScale.x / 4, ~LayerMask.GetMask("Player"));
 
         List<RaycastHit2D> hitRight = new List<RaycastHit2D>();
         foreach (RaycastHit2D h in hitRU) hitRight.Add(h);
@@ -160,9 +160,9 @@ public class Player : MonoBehaviour
         Debug.DrawLine(new Vector3(transform.position.x - (transform.lossyScale.x / 4), transform.position.y, transform.position.z), new Vector3(transform.position.x - transform.lossyScale.x / 2, transform.position.y, transform.position.z));
         Debug.DrawLine(new Vector3(transform.position.x - (transform.lossyScale.x / 4), transform.position.y - (transform.lossyScale.y / 3), transform.position.z), new Vector3(transform.position.x - transform.lossyScale.x / 2, transform.position.y - (transform.lossyScale.y / 3), transform.position.z));
 
-        RaycastHit2D[] hitLU = Physics2D.RaycastAll(new Vector3(transform.position.x - (transform.lossyScale.x / 4), transform.position.y + (transform.lossyScale.y / 3)), Vector3.left, transform.lossyScale.x / 4);
-        RaycastHit2D[] hitL = Physics2D.RaycastAll(new Vector3(transform.position.x - (transform.lossyScale.x / 4), transform.position.y), Vector3.left, transform.lossyScale.x / 4);
-        RaycastHit2D[] hitLL = Physics2D.RaycastAll(new Vector3(transform.position.x - (transform.lossyScale.x / 4), transform.position.y - (transform.lossyScale.y / 3)), Vector3.left, transform.lossyScale.x / 4);
+        RaycastHit2D[] hitLU = Physics2D.RaycastAll(new Vector3(transform.position.x - (transform.lossyScale.x / 4), transform.position.y + (transform.lossyScale.y / 3)), Vector3.left, transform.lossyScale.x / 4, ~LayerMask.GetMask("Player"));
+        RaycastHit2D[] hitL = Physics2D.RaycastAll(new Vector3(transform.position.x - (transform.lossyScale.x / 4), transform.position.y), Vector3.left, transform.lossyScale.x / 4, ~LayerMask.GetMask("Player"));
+        RaycastHit2D[] hitLL = Physics2D.RaycastAll(new Vector3(transform.position.x - (transform.lossyScale.x / 4), transform.position.y - (transform.lossyScale.y / 3)), Vector3.left, transform.lossyScale.x / 4, ~LayerMask.GetMask("Player"));
 
         List<RaycastHit2D> hitLeft = new List<RaycastHit2D>();
         foreach (RaycastHit2D h in hitLU) hitLeft.Add(h);
@@ -184,9 +184,9 @@ public class Player : MonoBehaviour
         Debug.DrawLine(new Vector3(transform.position.x, transform.position.y + (transform.lossyScale.y / 3), transform.position.z), new Vector3(transform.position.x, transform.position.y + (transform.lossyScale.y / 3) + (transform.lossyScale.y / 6), transform.position.z));
         Debug.DrawLine(new Vector3(transform.position.x + (transform.lossyScale.x / 3), transform.position.y + (transform.lossyScale.y / 3), transform.position.z), new Vector3(transform.position.x + transform.lossyScale.x / 3, transform.position.y + (transform.lossyScale.y / 3) + (transform.lossyScale.y / 6), transform.position.z));
 
-        RaycastHit2D[] hitUL = Physics2D.RaycastAll(new Vector3(transform.position.x - (transform.lossyScale.x / 3), transform.position.y + (transform.lossyScale.y / 3)), Vector3.up, transform.lossyScale.y / 6);
-        RaycastHit2D[] hitU = Physics2D.RaycastAll(new Vector3(transform.position.x, transform.position.y + (transform.lossyScale.y / 3)), Vector3.up, transform.lossyScale.y / 6);
-        RaycastHit2D[] hitUR = Physics2D.RaycastAll(new Vector3(transform.position.x + (transform.lossyScale.x / 3), transform.position.y + (transform.lossyScale.y / 3)), Vector3.up, transform.lossyScale.y / 6);
+        RaycastHit2D[] hitUL = Physics2D.RaycastAll(new Vector3(transform.position.x - (transform.lossyScale.x / 3), transform.position.y + (transform.lossyScale.y / 3)), Vector3.up, transform.lossyScale.y / 6, ~LayerMask.GetMask("Player"));
+        RaycastHit2D[] hitU = Physics2D.RaycastAll(new Vector3(transform.position.x, transform.position.y + (transform.lossyScale.y / 3)), Vector3.up, transform.lossyScale.y / 6, ~LayerMask.GetMask("Player"));
+        RaycastHit2D[] hitUR = Physics2D.RaycastAll(new Vector3(transform.position.x + (transform.lossyScale.x / 3), transform.position.y + (transform.lossyScale.y / 3)), Vector3.up, transform.lossyScale.y / 6, ~LayerMask.GetMask("Player"));
 
         List<RaycastHit2D> hitUp = new List<RaycastHit2D>();
         foreach (RaycastHit2D h in hitUL) hitUp.Add(h);
@@ -208,9 +208,9 @@ public class Player : MonoBehaviour
         Debug.DrawLine(new Vector3(transform.position.x, transform.position.y - (transform.lossyScale.y / 3), transform.position.z), new Vector3(transform.position.x, transform.position.y - (transform.lossyScale.y / 3) - (transform.lossyScale.y / 6), transform.position.z));
         Debug.DrawLine(new Vector3(transform.position.x + (transform.lossyScale.x / 3), transform.position.y - (transform.lossyScale.y / 3), transform.position.z), new Vector3(transform.position.x + transform.lossyScale.x / 3, transform.position.y - (transform.lossyScale.y / 3) - (transform.lossyScale.y / 6), transform.position.z));
 
-        RaycastHit2D[] hitDL = Physics2D.RaycastAll(new Vector3(transform.position.x - (transform.lossyScale.x / 3), transform.position.y - (transform.lossyScale.y / 3)), Vector3.down, transform.lossyScale.y / 6);
-        RaycastHit2D[] hitD = Physics2D.RaycastAll(new Vector3(transform.position.x, transform.position.y - (transform.lossyScale.y / 3)), Vector3.down, transform.lossyScale.y / 6);
-        RaycastHit2D[] hitDR = Physics2D.RaycastAll(new Vector3(transform.position.x + (transform.lossyScale.x / 3), transform.position.y - (transform.lossyScale.y / 3)), Vector3.down, transform.lossyScale.y / 6);
+        RaycastHit2D[] hitDL = Physics2D.RaycastAll(new Vector3(transform.position.x - (transform.lossyScale.x / 3), transform.position.y - (transform.lossyScale.y / 3)), Vector3.down, transform.lossyScale.y / 6, ~LayerMask.GetMask("Player"));
+        RaycastHit2D[] hitD = Physics2D.RaycastAll(new Vector3(transform.position.x, transform.position.y - (transform.lossyScale.y / 3)), Vector3.down, transform.lossyScale.y / 6, ~LayerMask.GetMask("Player"));
+        RaycastHit2D[] hitDR = Physics2D.RaycastAll(new Vector3(transform.position.x + (transform.lossyScale.x / 3), transform.position.y - (transform.lossyScale.y / 3)), Vector3.down, transform.lossyScale.y / 6, ~LayerMask.GetMask("Player"));
 
         List<RaycastHit2D> hitDown = new List<RaycastHit2D>();
         foreach (RaycastHit2D h in hitDL) hitDown.Add(h);
