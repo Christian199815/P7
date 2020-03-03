@@ -16,7 +16,10 @@ public class CustomServer : Server
     protected virtual void Awake()
     {
         base.ipAdress = LocalIPAddress();
-        print(base.ipAdress);
+    }
+
+    public void StartS()
+    {
         StartServer();
     }
 
