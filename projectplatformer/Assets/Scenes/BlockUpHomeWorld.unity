@@ -3761,6 +3761,7 @@ GameObject:
   - component: {fileID: 711219542}
   - component: {fileID: 711219541}
   - component: {fileID: 711219543}
+  - component: {fileID: 711219544}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -3811,6 +3812,22 @@ MonoBehaviour:
   ipAdress: 
   port: 54010
   waitingMessagesFrequency: 0.05
+--- !u!114 &711219544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711219540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac6238ba2901c9489f1a2f2a03c1638, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  needToSearch: 1
+  port: 54010
+  localIP: 
+  adresses: []
 --- !u!1 &754667399
 GameObject:
   m_ObjectHideFlags: 0
