@@ -12,12 +12,12 @@ public class ControllerInput : MonoBehaviour
     [SerializeField] private Button down;
     [SerializeField] private Button left;
 
-    private Client client;
+    private NiekClient client;
 
     private bool buttonUpPressed = false, buttonRightPressed = false, buttonDownPressed = false, buttonLeftPressed = false;
     private void Start()
     {
-        client = FindObjectOfType<Client>();
+        client = FindObjectOfType<NiekClient>();
     }
     void ChangeAxis()
     {

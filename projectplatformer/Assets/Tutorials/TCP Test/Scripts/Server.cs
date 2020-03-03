@@ -132,7 +132,6 @@ public class Server : MonoBehaviour
         //early out if there is nothing connected       
         if (m_NetStream == null)
         {
-            ServerLog("Socket Error: Start at least one client first", Color.red);
             return;
         }
 
@@ -164,20 +163,24 @@ public class Server : MonoBehaviour
         SendMessageToClient("Server_Close");
         ServerLog("Server Closed", Color.red);
         //Close client connection
-        if (m_Client.Connected)
+        if (m_Client != null)
         {
-            m_NetStream.Close();
-            m_NetStream = null;
-            m_Client.Close();
-            m_Client = null;
+            if (m_Client.Connected)
+            {
+                m_NetStream.Close();
+                m_NetStream = null;
+                m_Client.Close();
+                m_Client = null;
+            }
+
         }
-        //Close server connection
+
         if (m_Server != null)
         {
             m_Server.Stop();
             m_Server = null;
         }
-        
+
         OnServerClosed?.Invoke();
     }
 
