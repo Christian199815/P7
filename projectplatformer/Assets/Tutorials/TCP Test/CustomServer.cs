@@ -56,7 +56,6 @@ public class CustomServer : Server
     protected override void ServerLog(string msg, Color color)
     {
         base.ServerLog(msg, color);
-        print(msg);
     }
     #endregion
 
