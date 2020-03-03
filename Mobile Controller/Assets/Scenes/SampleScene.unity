@@ -181,6 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 181934800}
   - component: {fileID: 181934799}
+  - component: {fileID: 181934801}
   m_Layer: 0
   m_Name: NiekClient
   m_TagString: Untagged
@@ -203,6 +204,7 @@ MonoBehaviour:
   connectPanel: {fileID: 2019945639}
   statusText: {fileID: 1429368487}
   port: 54010
+  connectionIP: 
   adresses: []
 --- !u!4 &181934800
 Transform:
@@ -218,6 +220,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &181934801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181934798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea0048eb24a98744cb4334fec9499c6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: {fileID: 1429368487}
+  ipAdress: 127.0.0.1
+  port: 54010
+  waitingMessagesFrequency: 0.05
 --- !u!1 &276263624
 GameObject:
   m_ObjectHideFlags: 0
