@@ -17,19 +17,20 @@ public class FindClient : MonoBehaviour
     public Button connectButton;
     public TMP_InputField controllerID;
     public string gameSceneName;
-    bool needToSearch = true;
 
     public int port;
-    private CustomServer s;
+    private NiekServer s;
     public string localIP;
 
 
     private void Start()
     {
-        s = GetComponent<CustomServer>();
+        s = GetComponent<NiekServer>();
         DontDestroyOnLoad(this.gameObject);
         localIP = LocalIPAddress();
     }
+
+
 
     public static string LocalIPAddress()
     {
@@ -46,19 +47,16 @@ public class FindClient : MonoBehaviour
         return ips[ips.Count - 1];
     }
 
-
-    public List<string> adresses;
-    private void TryConnect()
+    public void TryConnect()
     {
         connectButton.enabled = false;
         statusText.text = "Connecting...";
         string id = int.Parse(controllerID.text).ToString();
         string ip = localIP.Split('.')[0] + "." + localIP.Split('.')[1] + "." + localIP.Split('.')[2] + "." + id;
-        print(ip);
-        SendMsg(ip);
+        Connect(ip);
     }
 
-    private void SendMsg(string ip)
+    private void Connect(string ip)
     {
         TcpClient _client;
         try
@@ -69,25 +67,28 @@ public class FindClient : MonoBehaviour
             TcpClient foundClient = _client;
             NetworkStream foundStream = _client.GetStream();
             SendMessageToServer(localIP, foundClient, foundStream);
-            print(ip + " Sent!");
-            _client.Client.Disconnect(true);
+            statusText.text = "Controller has been found!";
+            _client.Client.Disconnect(false);
             _client.Dispose();
-            
-            s.StartS();
-            SceneManager.LoadSceneAsync(gameSceneName);
+
+            s.StartServer();
         }
-        catch (SocketException ex)
+        catch
         {
-            print(ex.ToString());
             connectButton.enabled = true;
             statusText.text = "Controller not found!";
             //connection failed
+            return;
         }
+
+
+        //s.StartS();
+        //SceneManager.LoadSceneAsync(gameSceneName);
     }
 
 
 
-        public void SendMessageToServer(string sendMsg, TcpClient _foundClient, NetworkStream _foundStream)
+    public void SendMessageToServer(string sendMsg, TcpClient _foundClient, NetworkStream _foundStream)
     {
         if (_foundClient == null || !_foundClient.Connected) return;
         byte[] msg = Encoding.ASCII.GetBytes(sendMsg);

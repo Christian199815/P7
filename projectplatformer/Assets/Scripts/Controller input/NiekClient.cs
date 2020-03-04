@@ -17,37 +17,21 @@ public class NiekClient : MonoBehaviour
 
     public string connectionIP;
 
-    protected NetworkStream netStream = null;
-    private byte[] netBuffer = new byte[49152];
-    private int bytesReceived = 0;
-    private string receivedMessage = "";
+    protected NetworkStream m_NetStream = null;
+    private byte[] m_Buffer = new byte[49152];
+    private int m_BytesReceived = 0;
+    private string m_ReceivedMessage = "";
 
-    public bool clientStarted;
-
+    public List<string> adresses = new List<string>();
     void Start()
     {
-        clientStarted = false;
-       
-        StartCoroutine(test());
-        Debug.Log("Script started!");
+        //StartCoroutine(ConnectSequence());
     }
 
-    private IEnumerator test()
+    public IEnumerator ConnectSequence()
     {
-        while(connectionIP == string.Empty)
-        {
-            yield return null;
-        }
-        StartClient();
-    }
-
-
-    public void StartClient()
-    {
-        statusText.text += "\nStarting Client";
-        Debug.Log("Starting client!");
-        activeClient = TryToConnect();
-        StartCoroutine(ConnectionCheck());
+        yield return new WaitForSeconds(1);
+        TryToConnect();
     }
 
 
@@ -57,24 +41,20 @@ public class NiekClient : MonoBehaviour
         TcpClient _client;
         try
         {
-            statusText.text += "\nTrying to connect";
             IPAddress ipAd = IPAddress.Parse(connectionIP);
             _client = new TcpClient();
             _client.Connect(ipAd, port);
             if (_client.Connected)
             {
-                clientStarted = true;
                 activeClient = _client;
-                netStream = _client.GetStream();
-                StartCoroutine(ListenServerMessages());
-                statusText.text += "\nConnected!";
-                Debug.Log("Connected!");
+                m_NetStream = _client.GetStream();
+                StartCoroutine(ConnectionCheck());
                 return _client;
             }
         }
-        catch (SocketException e)
+        catch (SocketException)
         {
-            Debug.Log(e);
+
         }
         return null;
     }
@@ -85,17 +65,15 @@ public class NiekClient : MonoBehaviour
     {
         while (activeClient.Connected)
         {
-            yield return null;
+            yield return new WaitForSeconds(1);
             if (connectPanel.activeSelf) connectPanel.SetActive(false);
         }
         connectPanel.SetActive(true);
-        statusText.text = "Connection lost!";
         CloseClient();
     }
 
     private void CloseClient()
     {
-        clientStarted = false;
         if (activeClient.Connected)
             activeClient.Close();
 
@@ -103,6 +81,7 @@ public class NiekClient : MonoBehaviour
             activeClient = null;
 
         StopAllCoroutines();
+        StartCoroutine(ConnectSequence());
     }
     private IEnumerator ListenServerMessages()
     {
@@ -110,20 +89,20 @@ public class NiekClient : MonoBehaviour
         {
 
 
-        netStream = activeClient.GetStream();
+        m_NetStream = activeClient.GetStream();
         do
         {
-            netStream.BeginRead(netBuffer, 0, netBuffer.Length, MessageReceived, null);
+            m_NetStream.BeginRead(m_Buffer, 0, m_Buffer.Length, MessageReceived, null);
 
-            if (bytesReceived > 0)
+            if (m_BytesReceived > 0)
             {
-                OnMessageReceived(receivedMessage);
-                bytesReceived = 0;
+                OnMessageReceived(m_ReceivedMessage);
+                m_BytesReceived = 0;
             }
             
             yield return new WaitForSeconds(1);
 
-        } while (bytesReceived >= 0 && netStream != null);
+        } while (m_BytesReceived >= 0 && m_NetStream != null);
         CloseClient();
         }
     }
@@ -132,15 +111,15 @@ public class NiekClient : MonoBehaviour
     {
         if (result.IsCompleted && activeClient.Connected)
         {
-            bytesReceived = netStream.EndRead(result);
-            receivedMessage = Encoding.ASCII.GetString(netBuffer, 0, bytesReceived);
+            m_BytesReceived = m_NetStream.EndRead(result);
+            m_ReceivedMessage = Encoding.ASCII.GetString(m_Buffer, 0, m_BytesReceived);
         }
     }
 
     protected virtual void OnMessageReceived(string receivedMessage)
     {
         print(receivedMessage);
-        if (this.receivedMessage == "Server_Close")
+        if (m_ReceivedMessage == "Server_Close")
         {
             CloseClient();
         }
@@ -148,11 +127,8 @@ public class NiekClient : MonoBehaviour
 
     public void SendMessageToServer(string sendMsg)
     { 
-        if (activeClient == null) return;
-        if (!activeClient.Connected) return;
+        if (activeClient == null || !activeClient.Connected) return;
         byte[] msg = Encoding.ASCII.GetBytes(sendMsg);
-        netStream.Write(msg, 0, msg.Length);
+        m_NetStream.Write(msg, 0, msg.Length);
     }
-
-
 }

@@ -31,6 +31,7 @@ public class GetServer : MonoBehaviour
     private IEnumerator m_ListenClientMsgsCoroutine = null;
     #endregion
 
+
     private NiekClient nClient;
 
     private void Start()
@@ -55,7 +56,7 @@ public class GetServer : MonoBehaviour
         return ips[ips.Count - 1];
     }
 
-    private void StartServer()
+    public void StartServer()
     {
         //Set and enable Server 
         IPAddress ip = IPAddress.Parse(ipAdress);
@@ -63,7 +64,7 @@ public class GetServer : MonoBehaviour
         m_Server.Start();
         //Wait for async client connection 
         m_Server.BeginAcceptTcpClient(ClientConnected, null);
-        status.text += "Controller ID: " + ipAdress.Split('.')[3];
+        status.text = "Controller ID: " + ipAdress.Split('.')[3];
     }
 
 
@@ -75,8 +76,10 @@ public class GetServer : MonoBehaviour
         string a = m_Client.Client.RemoteEndPoint.ToString();
         nClient.connectionIP = a.Split(':')[0];
         status.text += "\nFound server!";
-        SendMessageToServer("OK", m_Client, m_Client.GetStream());
+        Debug.Log("Starting server");
+        nClient.StartClient();
         CloseServer();
+
     }
 
 
