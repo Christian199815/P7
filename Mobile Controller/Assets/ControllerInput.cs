@@ -12,12 +12,12 @@ public class ControllerInput : MonoBehaviour
     [SerializeField] private Button down;
     [SerializeField] private Button left;
 
-    private NiekClient client;
+    public FinishedClient client;
 
     private bool buttonUpPressed = false, buttonRightPressed = false, buttonDownPressed = false, buttonLeftPressed = false;
     private void Start()
     {
-        client = FindObjectOfType<NiekClient>();
+        client = FindObjectOfType<FinishedClient>();
     }
     void ChangeAxis()
     {
@@ -58,6 +58,10 @@ public class ControllerInput : MonoBehaviour
 
     private void SendData()
     {
-        client.SendMessageToServer(axis.x + "/" + axis.y);
+        if (client.PairedToGame)
+        {
+            client.SendMessageToServer(axis.x + "/" + axis.y);
+        }
+        
     }
 }
