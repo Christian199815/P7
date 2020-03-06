@@ -7,87 +7,84 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class FindClient : MonoBehaviour
 {
-    public TextMeshProUGUI statusText;
-    public Button connectButton;
-    public TMP_InputField controllerID;
-    public string gameSceneName;
     bool needToSearch = true;
 
     public int port;
-    private CustomServer s;
+
     public string localIP;
 
 
     private void Start()
     {
-        s = GetComponent<CustomServer>();
-        DontDestroyOnLoad(this.gameObject);
-        localIP = LocalIPAddress();
+           StartCoroutine(FindServers());
     }
 
-    public static string LocalIPAddress()
+    private IEnumerator FindServers()
     {
-        IPHostEntry host;
-        host = Dns.GetHostEntry(Dns.GetHostName());
-        List<string> ips = new List<string>();
-        foreach (IPAddress ip in host.AddressList)
+        while (true)
         {
-            if (ip.AddressFamily == AddressFamily.InterNetwork)
+            yield return new WaitForSeconds(1);
+            while (needToSearch)
             {
-                ips.Add(ip.ToString());
+                Search();
+                yield return new WaitForSeconds(3);
             }
         }
-        return ips[ips.Count - 1];
     }
-
 
     public List<string> adresses;
-    private void TryConnect()
+    private void Search()
     {
-        connectButton.enabled = false;
-        statusText.text = "Connecting...";
-        string id = int.Parse(controllerID.text).ToString();
-        string ip = localIP.Split('.')[0] + "." + localIP.Split('.')[1] + "." + localIP.Split('.')[2] + "." + id;
-        print(ip);
-        SendMsg(ip);
+        adresses = new List<string>();
+        foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
+        {
+            if (ni.NetworkInterfaceType == NetworkInterfaceType.Wireless80211|| ni.NetworkInterfaceType == NetworkInterfaceType.Ethernet)
+            {
+                foreach (UnicastIPAddressInformation ip in ni.GetIPProperties().UnicastAddresses)
+                {
+                    if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        adresses.Add(ip.Address.ToString());
+                    }
+                }
+            }
+        }
+
+        SendMessages();
     }
 
-    private void SendMsg(string ip)
+    private TcpClient SendMessages()
     {
         TcpClient _client;
-        try
+        foreach (string ip in adresses)
         {
-            IPAddress ipAd = IPAddress.Parse(ip);
-            _client = new TcpClient();
-            _client.Connect(ipAd, port);
-            TcpClient foundClient = _client;
-            NetworkStream foundStream = _client.GetStream();
-            SendMessageToServer(localIP, foundClient, foundStream);
-            print(ip + " Sent!");
-            _client.Client.Disconnect(true);
-            _client.Dispose();
-            
-            s.StartS();
-            SceneManager.LoadSceneAsync(gameSceneName);
+            try
+            {
+                IPAddress ipAd = IPAddress.Parse(ip);
+                _client = new TcpClient();
+                _client.Connect(ipAd, port);
+                if (_client.Connected)
+                {
+                    TcpClient foundClient = _client;
+                    NetworkStream foundStream = _client.GetStream();
+                    SendMessageToServer(localIP, foundClient, foundStream);
+                    print(localIP + " Sent!");
+
+                    _client.Dispose();
+                }
+            }
+            catch (SocketException)
+            {
+                continue;
+            }
         }
-        catch (SocketException ex)
-        {
-            print(ex.ToString());
-            connectButton.enabled = true;
-            statusText.text = "Controller not found!";
-            //connection failed
-        }
+        return null;
     }
 
-
-
-        public void SendMessageToServer(string sendMsg, TcpClient _foundClient, NetworkStream _foundStream)
+    public void SendMessageToServer(string sendMsg, TcpClient _foundClient, NetworkStream _foundStream)
     {
         if (_foundClient == null || !_foundClient.Connected) return;
         byte[] msg = Encoding.ASCII.GetBytes(sendMsg);

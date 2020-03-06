@@ -31,6 +31,7 @@ public class NiekClient : MonoBehaviour
     private IEnumerator ConnectSequence()
     {
         connectPanel.SetActive(true);
+        statusText.text = "Finding server...";
 
         while(connectionIP == string.Empty)
         {
@@ -40,7 +41,9 @@ public class NiekClient : MonoBehaviour
         activeClient = TryToConnect();
         if (activeClient == null)
         {
-            yield return new WaitForSeconds(5);
+            statusText.text = "Connection error";
+            statusText.text += "\nTrying again in 10 seconds...";
+            yield return new WaitForSeconds(10);
             StartCoroutine(ConnectSequence());
             yield break;
         }
