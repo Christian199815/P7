@@ -15,19 +15,20 @@ public class PressurePlate : MonoBehaviour
         HiddenPlatformDesPos = new Vector3(39.8f, 1.5f, 0);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.collider.CompareTag("Player") || collision.collider.CompareTag("Box"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Box"))
         {
             Debug.Log("Input Detected!");
             HiddenPlatform.transform.position = Vector3.Lerp(HiddenPlatform.transform.position, HiddenPlatformDesPos, (speed * Time.deltaTime));
         }
-
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             if (HiddenPlatform.transform.position != HiddenPlatformOrgPos)
             {
@@ -35,6 +36,8 @@ public class PressurePlate : MonoBehaviour
             }
         }
     }
+
+   
 
 
 }
