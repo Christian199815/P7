@@ -18,7 +18,20 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         if (inputType == InputType.LocalKeyboard) axis = MovementAxis();
-        else if (inputType == InputType.LocalController) axis = ControllerAxis();
+        else if (inputType == InputType.LocalController)
+        {
+            axis = ControllerAxis();
+
+            if (Controller.GetButtonB(0)) buttonAxis.x = 1;
+            else buttonAxis.x = 0;
+            if (Controller.GetButtonY(0)) buttonAxis.y = 1;
+            else buttonAxis.y = 0;
+            if (Controller.GetButtonX(0)) buttonAxis.z = 1;
+            else buttonAxis.z = 0;
+            if (Controller.GetButtonA(0)) buttonAxis.w = 1;
+            else buttonAxis.w = 0;
+
+        }
     }
 
     private Vector2 MovementAxis()
