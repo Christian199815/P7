@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1640535900696269557}
   - component: {fileID: 1640535900696269558}
-  - component: {fileID: 1640535900696269556}
-  - component: {fileID: 1640535900696269563}
+  - component: {fileID: 1178323719}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -47,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputType: 1
   axis: {x: 0, y: 0}
---- !u!114 &1640535900696269556
+--- !u!114 &1178323719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,24 +55,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1640535900696269559}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86938d8e93081c346bb95b5ed0dc14ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 9753ab865bf29104d80eff0615d89798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ipAdress: 
-  port: 54010
-  waitingMessagesFrequency: 0.05
---- !u!114 &1640535900696269563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640535900696269559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bac6238ba2901c9489f1a2f2a03c1638, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  statusText: {fileID: 0}
+  connectButton: {fileID: 0}
+  controllerID: {fileID: 0}
+  gameSceneName: BlockUpHomeWorld
   port: 54010
   localIP: 
-  adresses: []

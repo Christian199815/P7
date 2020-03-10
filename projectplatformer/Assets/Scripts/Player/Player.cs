@@ -30,26 +30,30 @@ public class Player : MonoBehaviour
     public float wallJumpForce;
 
     public Vector2 inputAxis = Vector2.zero;
+    public Vector4 buttonAxis = Vector4.zero;
 
     private bool singleInput;
 
+    private InputManager iMan;
+
     void Start()
     {
-        
+        iMan = FindObjectOfType<InputManager>();
     }
 
     private void Update()
     { 
-        inputAxis = FindObjectOfType<InputManager>().axis;
+        inputAxis = iMan.axis;
+        buttonAxis = iMan.buttonAxis;
         
         Movement();
 
-        if (inputAxis.y == 1 && singleInput && jumpsDone < maxJumps)
+        if (buttonAxis.x == 1 && singleInput && jumpsDone < maxJumps)
         {
             singleInput = false;
             Jump();
         }
-        if (inputAxis.y != 1) singleInput = true;
+        if (buttonAxis.x != 1) singleInput = true;
         
 
         transform.Translate(velocity * Time.deltaTime);

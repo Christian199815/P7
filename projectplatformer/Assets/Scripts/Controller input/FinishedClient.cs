@@ -11,6 +11,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(InputManager))]
 public class FinishedClient : MonoBehaviour
 {
     public TextMeshProUGUI statusText;
@@ -27,9 +28,12 @@ public class FinishedClient : MonoBehaviour
     private string receivedMessage = "";
     private int bytesReceived = 0;
 
+    private InputManager iManager;
+
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        iManager = GetComponent<InputManager>();
         localIP = LocalIPAddress();
     }
 
@@ -140,17 +144,29 @@ public class FinishedClient : MonoBehaviour
     //What to do with the received message fron controller
     protected virtual void OnMessageReceived(string receivedMessage)
     {
-        if (receivedMessage == "Connected") ControllerConnected();
+        if (receivedMessage == "I'm Connected!") ControllerConnected();
         else if (receivedMessage == "Disconnected") CloseClient();
 
         Debug.Log("Controller > " + receivedMessage);
 
+        ManageData(receivedMessage);
     }
 
 
     private void ControllerConnected()
     {
-        //What to do when a controller has been connected?
-        Debug.Log("Doe iets met game scene? Controller connected");
+        SceneManager.LoadSceneAsync("BlockUpHomeWorld");
+    }
+
+    private void ManageData(string data)
+    {
+        if (!data.Contains("/")) return;
+        string[] splitData = data.Split('/');
+        iManager.axis.x = Mathf.Clamp(float.Parse(splitData[0]), -1, 1);
+        iManager.axis.y = Mathf.Clamp(float.Parse(splitData[1]), -1, 1);
+        iManager.buttonAxis.x = Mathf.Clamp(float.Parse(splitData[2]), 0, 1);
+        iManager.buttonAxis.y = Mathf.Clamp(float.Parse(splitData[3]), 0, 1);
+        iManager.buttonAxis.z = Mathf.Clamp(float.Parse(splitData[4]), 0, 1);
+        iManager.buttonAxis.w = Mathf.Clamp(float.Parse(splitData[5]), 0, 1);
     }
 }
