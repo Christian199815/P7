@@ -36,6 +36,8 @@ public class Player : MonoBehaviour
 
     private InputManager iMan;
 
+    public bool movementEnabled = true;
+
     void Start()
     {
         iMan = FindObjectOfType<InputManager>();
@@ -46,9 +48,10 @@ public class Player : MonoBehaviour
         inputAxis = iMan.axis;
         buttonAxis = iMan.buttonAxis;
         
+        
         Movement();
 
-        if (buttonAxis.x == 1 && singleInput && jumpsDone < maxJumps)
+        if (buttonAxis.x == 1 && singleInput && jumpsDone < maxJumps && movementEnabled)
         {
             singleInput = false;
             Jump();
@@ -78,6 +81,10 @@ public class Player : MonoBehaviour
 
     private void Movement()
     { 
+        if (!movementEnabled)
+        {
+            inputAxis = Vector2.zero;
+        }
         if ((velocity.x > 0 && CollRight) || velocity.x < 0 && CollLeft)
         {
             velocity.x = 0;
@@ -105,6 +112,7 @@ public class Player : MonoBehaviour
                 if (velocity.x <= -airDecelerationSpeed * Time.deltaTime / 2) velocity.x += airDecelerationSpeed * Time.deltaTime;
             }
         }
+
         if (inputAxis.x > 0)
         {
             if (velocity.x <= -groundDecelerationSpeed * Time.deltaTime) velocity.x += groundDecelerationSpeed * Time.deltaTime;
@@ -114,6 +122,11 @@ public class Player : MonoBehaviour
         {
             if (velocity.x >= groundDecelerationSpeed * Time.deltaTime) velocity.x -= groundDecelerationSpeed * Time.deltaTime;
             else if (velocity.x >= -maxMovementSpeed + accelerationSpeed * Time.deltaTime) velocity.x -= accelerationSpeed * Time.deltaTime;
+        }
+
+        if (!movementEnabled)
+        {
+            inputAxis = iMan.axis;
         }
     }
 

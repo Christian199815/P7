@@ -90,11 +90,14 @@ public class FinishedClient : MonoBehaviour
         Debug.Log("A controller disconnected! ;-(");
         SendMessageToServer("Disconnected");
 
-        if (Client.Connected)
-            Client.Close();
+
 
         if (Client != null)
+        {
+            if (Client.Connected) Client.Close();
             Client = null;
+        }
+
     }
 
     private IEnumerator ListenServerMessages()
