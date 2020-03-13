@@ -28,6 +28,7 @@ public class Shooting : MonoBehaviour
             }
             else
             {
+                Shoot();
                 if (gunObject.activeSelf) gunObject.SetActive(false);
                 player.movementEnabled = true;
             }
@@ -37,7 +38,8 @@ public class Shooting : MonoBehaviour
 
     private void ShootingControlls()
     {
-        Vector2 axis = player.inputAxis;
+        Vector2 axis = player.inputAxis;//Controller.GetLeftStickAxis(1);
+        axis.y = -axis.y;
 
         if (axis.x > 0 && axis.y == 0) shootingDirection = new Vector2(1, 0);
         else if (axis.x < 0 && axis.y == 0) shootingDirection = new Vector2(-1, 0);
@@ -46,5 +48,17 @@ public class Shooting : MonoBehaviour
         else if (axis.x < 0 && axis.y > 0) shootingDirection = new Vector2(-1, 1);
 
         if (axis.x == 0 && axis.y == 0) shootingDirection = Vector2.zero;
+
+        if (shootingDirection.x > 0 && shootingDirection.y == 0) gunObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        else if (shootingDirection.x < 0 && shootingDirection.y == 0) gunObject.transform.rotation = Quaternion.Euler(0, 0, 180);
+        if (shootingDirection.x == 0 && shootingDirection.y > 0) gunObject.transform.rotation = Quaternion.Euler(0, 0, 90);
+
+        if (shootingDirection.x > 0 && shootingDirection.y > 0) gunObject.transform.rotation = Quaternion.Euler(0, 0, 45);
+        if (shootingDirection.x < 0 && shootingDirection.y > 0) gunObject.transform.rotation = Quaternion.Euler(0, 0, 135);
+    }
+
+    private void Shoot()
+    {
+
     }
 }

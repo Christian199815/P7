@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        iMan = FindObjectOfType<InputManager>();
+        
     }
     public bool isSwinging;
     public Vector2 ropeHook;
@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (iMan == null) iMan = FindObjectOfType<InputManager>();
         inputAxis = iMan.axis;
         buttonAxis = iMan.buttonAxis;
 

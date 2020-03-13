@@ -167,12 +167,16 @@ public class FinishedClient : MonoBehaviour
     private void ManageData(string data)
     {
         if (!data.Contains("/")) return;
-        string[] splitData = data.Split('/');
-        iManager.axis.x = Mathf.Clamp(float.Parse(splitData[0]), -1, 1);
-        iManager.axis.y = Mathf.Clamp(float.Parse(splitData[1]), -1, 1);
-        iManager.buttonAxis.x = Mathf.Clamp(float.Parse(splitData[2]), 0, 1);
-        iManager.buttonAxis.y = Mathf.Clamp(float.Parse(splitData[3]), 0, 1);
-        iManager.buttonAxis.z = Mathf.Clamp(float.Parse(splitData[4]), 0, 1);
-        iManager.buttonAxis.w = Mathf.Clamp(float.Parse(splitData[5]), 0, 1);
+        try {
+            string[] splitData = data.Split('/');
+            iManager.axis.x = Mathf.Clamp(float.Parse(splitData[0]), -1, 1);
+            iManager.axis.y = Mathf.Clamp(float.Parse(splitData[1]), -1, 1);
+            iManager.buttonAxis.x = Mathf.Clamp(float.Parse(splitData[2]), 0, 1);
+            iManager.buttonAxis.y = Mathf.Clamp(float.Parse(splitData[3]), 0, 1);
+            iManager.buttonAxis.z = Mathf.Clamp(float.Parse(splitData[4]), 0, 1);
+            iManager.buttonAxis.w = Mathf.Clamp(float.Parse(splitData[5]), 0, 1);
+        }
+        catch { }
+
     }
 }
