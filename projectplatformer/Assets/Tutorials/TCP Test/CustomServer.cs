@@ -59,18 +59,5 @@ public class CustomServer : Server
     }
     #endregion
 
-    public static string LocalIPAddress()
-    {
-        IPHostEntry host;
-        host = Dns.GetHostEntry(Dns.GetHostName());
-        List<string> ips = new List<string>();
-        foreach (IPAddress ip in host.AddressList)
-        {
-            if (ip.AddressFamily == AddressFamily.InterNetwork)
-            {
-                ips.Add(ip.ToString());
-            }
-        }
-        return ips[ips.Count - 1];
-    }
+
 }

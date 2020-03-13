@@ -30,9 +30,18 @@ public class Player : MonoBehaviour
     public float wallJumpForce;
 
     public Vector2 inputAxis = Vector2.zero;
+    public Vector4 buttonAxis = Vector4.zero;
 
     private bool singleInput;
 
+    private InputManager iMan;
+
+    public bool movementEnabled = true;
+
+    void Start()
+    {
+        iMan = FindObjectOfType<InputManager>();
+    }
     public bool isSwinging;
     public Vector2 ropeHook;
     public float swingForce = 4f;
@@ -42,21 +51,22 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-  
 
     private void Update()
-    { 
-        inputAxis = FindObjectOfType<InputManager>().axis;
-        
+    {
+        inputAxis = iMan.axis;
+        buttonAxis = iMan.buttonAxis;
+
+
         Movement();
 
-        if (inputAxis.y == 1 && singleInput && jumpsDone < maxJumps)
+        if (buttonAxis.x == 1 && singleInput && jumpsDone < maxJumps && movementEnabled)
         {
             singleInput = false;
             Jump();
         }
-        if (inputAxis.y != 1) singleInput = true;
-        
+        if (buttonAxis.x != 1) singleInput = true;
+
 
         transform.Translate(velocity * Time.deltaTime);
         RayCast();
@@ -70,7 +80,7 @@ public class Player : MonoBehaviour
             if (CollLeft) velocity.x = wallJumpForce;
             if (CollRight) velocity.x = -wallJumpForce;
         }
-        
+
         if (velocity.y <= 0) velocity.y = jumpForce;
         else velocity.y += jumpForce;
 
@@ -79,7 +89,11 @@ public class Player : MonoBehaviour
 
 
     private void Movement()
-    { 
+    {
+        if (!movementEnabled)
+        {
+            inputAxis = Vector2.zero;
+        }
         if ((velocity.x > 0 && CollRight) || velocity.x < 0 && CollLeft)
         {
             velocity.x = 0;
@@ -107,6 +121,7 @@ public class Player : MonoBehaviour
                 if (velocity.x <= -airDecelerationSpeed * Time.deltaTime / 2) velocity.x += airDecelerationSpeed * Time.deltaTime;
             }
         }
+
         if (inputAxis.x > 0)
         {
             if (velocity.x <= -groundDecelerationSpeed * Time.deltaTime) velocity.x += groundDecelerationSpeed * Time.deltaTime;
@@ -117,11 +132,16 @@ public class Player : MonoBehaviour
             if (velocity.x >= groundDecelerationSpeed * Time.deltaTime) velocity.x -= groundDecelerationSpeed * Time.deltaTime;
             else if (velocity.x >= -maxMovementSpeed + accelerationSpeed * Time.deltaTime) velocity.x -= accelerationSpeed * Time.deltaTime;
         }
+
+        if (!movementEnabled)
+        {
+            inputAxis = iMan.axis;
+        }
     }
 
     void FixedUpdate()
     {
-        
+
     }
 
     public void Grappling()
@@ -148,7 +168,7 @@ public class Player : MonoBehaviour
                 var force = perpendicularDirection * swingForce;
                 rb.AddForce(force, ForceMode2D.Force);
             }
-           
+
         }
     }
 
@@ -188,7 +208,7 @@ public class Player : MonoBehaviour
             if (velocity.x > 0) transform.position = new Vector2(h.point.x - transform.lossyScale.x / 2, transform.position.y);
         }
 
-        
+
     }
 
     private void RayCastLeft()
