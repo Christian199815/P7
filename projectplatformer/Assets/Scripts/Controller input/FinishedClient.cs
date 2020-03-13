@@ -30,8 +30,11 @@ public class FinishedClient : MonoBehaviour
 
     private InputManager iManager;
 
+
     private void Start()
     {
+
+
         DontDestroyOnLoad(this.gameObject);
         iManager = GetComponent<InputManager>();
         localIP = LocalIPAddress();

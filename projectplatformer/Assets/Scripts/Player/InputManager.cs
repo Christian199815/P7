@@ -15,6 +15,14 @@ public class InputManager : MonoBehaviour
     public Vector2 axis;
     public Vector4 buttonAxis;
 
+    public static InputManager instance;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
+
     private void Update()
     {
         if (inputType == InputType.LocalKeyboard) axis = MovementAxis();
