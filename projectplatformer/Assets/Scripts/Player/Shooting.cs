@@ -25,14 +25,15 @@ public class Shooting : MonoBehaviour
                 if (!gunObject.activeSelf) gunObject.SetActive(true);
                 player.movementEnabled = false;
                 ShootingControlls();
-            }
-            else
-            {
-                Shoot();
-                if (gunObject.activeSelf) gunObject.SetActive(false);
-                player.movementEnabled = true;
-            }
                 yield return null;
+                if (player.buttonAxis.z == 0)
+                {
+                    Shoot();
+                    if (gunObject.activeSelf) gunObject.SetActive(false);
+                    player.movementEnabled = true;
+                }
+            }
+            yield return null;
         }
     }
 
@@ -59,6 +60,15 @@ public class Shooting : MonoBehaviour
 
     private void Shoot()
     {
+        Bullet b = null;
+        if (shootingDirection.x > 0 && shootingDirection.y == 0) b = new Bullet(transform.position, new Vector3(1, 0, 0));
+        else if (shootingDirection.x < 0 && shootingDirection.y == 0) b = new Bullet(transform.position, new Vector3(-1, 0, 0));
+        if (shootingDirection.x == 0 && shootingDirection.y > 0) b = new Bullet(transform.position, new Vector3(0, 1, 0));
 
+        if (shootingDirection.x > 0 && shootingDirection.y > 0) b = new Bullet(transform.position, new Vector3(1, 1, 0));
+        if (shootingDirection.x < 0 && shootingDirection.y > 0) b = new Bullet(transform.position, new Vector3(-1, 1, 0));
+
+        
+        print(b?.hit.collider?.gameObject.name);
     }
 }
