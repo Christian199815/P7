@@ -9,6 +9,7 @@ public class Shooting : MonoBehaviour
     public bool shootingEnabled;
     public Vector2 shootingDirection;
     public GameObject gunObject;
+    public GameObject bulletTrail;
     void Start()
     {
         player = GetComponent<Player>();
@@ -20,18 +21,27 @@ public class Shooting : MonoBehaviour
     {
         while (true)
         {
+
             if (player.buttonAxis.z == 1)
             {
                 if (!gunObject.activeSelf) gunObject.SetActive(true);
                 player.movementEnabled = false;
                 ShootingControlls();
-                yield return null;
-                if (player.buttonAxis.z == 0)
+            }
+
+            if (player.inputAxis == Vector2.zero)
+            {
+                gunObject.SetActive(false);
+            }
+
+            if (player.buttonAxis.z == 0)
+            {
+                if (gunObject.activeSelf)
                 {
+                    gunObject.SetActive(false);
                     Shoot();
-                    if (gunObject.activeSelf) gunObject.SetActive(false);
-                    player.movementEnabled = true;
                 }
+                player.movementEnabled = true;
             }
             yield return null;
         }
@@ -40,7 +50,7 @@ public class Shooting : MonoBehaviour
     private void ShootingControlls()
     {
         Vector2 axis = player.inputAxis;//Controller.GetLeftStickAxis(1);
-        axis.y = -axis.y;
+        //axis.y = -axis.y;
 
         if (axis.x > 0 && axis.y == 0) shootingDirection = new Vector2(1, 0);
         else if (axis.x < 0 && axis.y == 0) shootingDirection = new Vector2(-1, 0);
@@ -61,14 +71,14 @@ public class Shooting : MonoBehaviour
     private void Shoot()
     {
         Bullet b = null;
-        if (shootingDirection.x > 0 && shootingDirection.y == 0) b = new Bullet(transform.position, new Vector3(1, 0, 0));
-        else if (shootingDirection.x < 0 && shootingDirection.y == 0) b = new Bullet(transform.position, new Vector3(-1, 0, 0));
-        if (shootingDirection.x == 0 && shootingDirection.y > 0) b = new Bullet(transform.position, new Vector3(0, 1, 0));
+        if (shootingDirection.x > 0 && shootingDirection.y == 0) b = new Bullet(transform.position, new Vector3(1, 0, 0), bulletTrail);
+        else if (shootingDirection.x < 0 && shootingDirection.y == 0) b = new Bullet(transform.position, new Vector3(-1, 0, 0), bulletTrail);
+        if (shootingDirection.x == 0 && shootingDirection.y > 0) b = new Bullet(transform.position, new Vector3(0, 1, 0), bulletTrail);
 
-        if (shootingDirection.x > 0 && shootingDirection.y > 0) b = new Bullet(transform.position, new Vector3(1, 1, 0));
-        if (shootingDirection.x < 0 && shootingDirection.y > 0) b = new Bullet(transform.position, new Vector3(-1, 1, 0));
-
+        if (shootingDirection.x > 0 && shootingDirection.y > 0) b = new Bullet(transform.position, new Vector3(1, 1, 0), bulletTrail);
+        if (shootingDirection.x < 0 && shootingDirection.y > 0) b = new Bullet(transform.position, new Vector3(-1, 1, 0), bulletTrail);
         
-        print(b?.hit.collider?.gameObject.name);
+        
+        //Nu kan je dingen opvragen met dit -> b?.hit.collider?.gameObject <-
     }
 }

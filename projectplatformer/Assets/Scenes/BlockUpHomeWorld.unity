@@ -10302,6 +10302,8 @@ MonoBehaviour:
   shootingEnabled: 1
   shootingDirection: {x: 0, y: 0}
   gunObject: {fileID: 2023577099}
+  bulletTrail: {fileID: 325935912004277779, guid: d5d434d56fa2707409c81b3961ea5315,
+    type: 3}
 --- !u!1 &2023577099
 GameObject:
   m_ObjectHideFlags: 0
@@ -10317,7 +10319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2023577100
 Transform:
   m_ObjectHideFlags: 0
