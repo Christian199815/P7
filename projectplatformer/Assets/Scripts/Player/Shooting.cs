@@ -41,6 +41,7 @@ public class Shooting : MonoBehaviour
                     gunObject.SetActive(false);
                     Shoot();
                 }
+                yield return new WaitForSeconds(0.25f);
                 player.movementEnabled = true;
             }
             yield return null;
@@ -77,8 +78,12 @@ public class Shooting : MonoBehaviour
 
         if (shootingDirection.x > 0 && shootingDirection.y > 0) b = new Bullet(transform.position, new Vector3(1, 1, 0), bulletTrail);
         if (shootingDirection.x < 0 && shootingDirection.y > 0) b = new Bullet(transform.position, new Vector3(-1, 1, 0), bulletTrail);
-        
-        
-        //Nu kan je dingen opvragen met dit -> b?.hit.collider?.gameObject <-
+
+
+        BulletHit(b.hit);
+    }
+    private void BulletHit(RaycastHit2D hit)
+    {
+        //Nu kan je dingen opvragen met dit -> hit.collider?.gameObject <-
     }
 }
