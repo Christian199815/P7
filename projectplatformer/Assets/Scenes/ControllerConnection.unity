@@ -204,8 +204,34 @@ PrefabInstance:
       propertyPath: controllerID
       value: 
       objectReference: {fileID: 721436994}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1640535900696269556, guid: 661fcf5ec62ef5a48b171fb898c9a510, type: 3}
+    - {fileID: 1640535900696269563, guid: 661fcf5ec62ef5a48b171fb898c9a510, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 661fcf5ec62ef5a48b171fb898c9a510, type: 3}
+--- !u!1 &221679363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1640535900696269559, guid: 661fcf5ec62ef5a48b171fb898c9a510,
+    type: 3}
+  m_PrefabInstance: {fileID: 126538202}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &221679364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221679363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9753ab865bf29104d80eff0615d89798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusText: {fileID: 1361902747}
+  connectButton: {fileID: 335275781}
+  controllerID: {fileID: 721436994}
+  gameSceneName: BlockUpHomeWorld
+  port: 54010
+  localIP: 
 --- !u!1 &335275779
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +314,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1178323719}
+      - m_Target: {fileID: 221679364}
         m_MethodName: TryConnect
         m_Mode: 1
         m_Arguments:
@@ -1281,25 +1307,13 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104970596}
   m_CullTransparentMesh: 0
---- !u!114 &1178323719 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1178323719, guid: 661fcf5ec62ef5a48b171fb898c9a510,
-    type: 3}
-  m_PrefabInstance: {fileID: 126538202}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9753ab865bf29104d80eff0615d89798, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1178323720 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1640535900696269558, guid: 661fcf5ec62ef5a48b171fb898c9a510,
     type: 3}
   m_PrefabInstance: {fileID: 126538202}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 221679363}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e2c7efc0d8f983488834e731cd480a0, type: 3}
