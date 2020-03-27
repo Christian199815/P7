@@ -38,8 +38,11 @@ public class Player : MonoBehaviour
 
     public bool movementEnabled = true;
 
+    private bool pause = false;
+
     void Start()
     {
+        pause = true;
         iMan = FindObjectOfType<InputManager>();
     }
     public bool isSwinging;
@@ -54,6 +57,14 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (pause)
+        {
+            if (iMan.axis != Vector2.zero)
+            {
+                pause = false;
+            }
+            return;
+        }
         inputAxis = iMan.axis;
         buttonAxis = iMan.buttonAxis;
 
