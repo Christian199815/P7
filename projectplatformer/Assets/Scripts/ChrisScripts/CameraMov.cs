@@ -5,24 +5,31 @@ using UnityEngine;
 public class CameraMov : MonoBehaviour
 {
     public GameObject Player;
+    public Camera cm;
+    private bool isTopFloor = true;
+    public int camSize = 15;
+    public Vector3 offset;
+    public float moveSpeed;
 
 
 
     private void Start()
     {
-        
+
     }
 
     private void Update()
     {
-        if (Player.transform.position.x >= -46.7f && Player.transform.position.x <= 11.6)
+        if (Player.transform.position.y > 3.9f)
         {
-            Section1();
+            transform.position = Vector3.Lerp(transform.position, new Vector3(Player.transform.position.x + offset.x, 9.2f, Player.transform.position.z + offset.z), Time.deltaTime * moveSpeed);
         }
-        else if (Player.transform.position.x >= 11.7 && Player.transform.position.x <= 40.5f)
+        else
         {
-            Section2();
+            transform.position = Vector3.Lerp(transform.position, new Vector3(Player.transform.position.x + offset.x, 4.5f, Player.transform.position.z + offset.z), Time.deltaTime * moveSpeed);
         }
+
+        CameraAndLift();
     }
 
     private void Section1()
