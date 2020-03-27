@@ -12,7 +12,7 @@ public class UiButton : MonoBehaviour
     {
         if (Start)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("BlockUpHomeWorld");
         }
         else if (Quit)
         {
