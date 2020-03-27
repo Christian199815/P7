@@ -9,6 +9,7 @@ public class CameraMov : MonoBehaviour
     private bool isTopFloor = true;
     public int camSize = 15;
     public Vector3 offset;
+    public float moveSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,15 @@ public class CameraMov : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(Player.transform.position.x + offset.x, transform.position.y, Player.transform.position.z + offset.z);
+        if (Player.transform.position.y > 3.9f)
+        {
+            transform.position = Vector3.Lerp(transform.position, new Vector3(Player.transform.position.x + offset.x, 9.2f, Player.transform.position.z + offset.z), Time.deltaTime * moveSpeed);
+        }
+        else
+        {
+            transform.position = Vector3.Lerp(transform.position, new Vector3(Player.transform.position.x + offset.x, 4.5f, Player.transform.position.z + offset.z), Time.deltaTime * moveSpeed);
+        }
+
         CameraAndLift();
     }
 
