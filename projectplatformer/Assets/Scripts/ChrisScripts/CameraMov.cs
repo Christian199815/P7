@@ -28,8 +28,6 @@ public class CameraMov : MonoBehaviour
         {
             transform.position = Vector3.Lerp(transform.position, new Vector3(Player.transform.position.x + offset.x, 4.5f, Player.transform.position.z + offset.z), Time.deltaTime * moveSpeed);
         }
-
-        CameraAndLift();
     }
 
     private void Section1()
