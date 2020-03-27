@@ -229,7 +229,7 @@ MonoBehaviour:
   statusText: {fileID: 1361902747}
   connectButton: {fileID: 335275781}
   controllerID: {fileID: 721436994}
-  gameSceneName: BlockUpHomeWorld
+  gameSceneName: Home
   port: 54010
   localIP: 
 --- !u!1 &335275779
