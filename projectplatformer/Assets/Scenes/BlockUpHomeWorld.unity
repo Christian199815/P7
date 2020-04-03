@@ -29229,6 +29229,8 @@ MonoBehaviour:
   CollDown: 0
   maxJumps: 2
   velocity: {x: 0, y: 0}
+  dashSpeed: 20
+  dashFriction: 0.6
   maxMovementSpeed: 6
   accelerationSpeed: 20
   groundDecelerationSpeed: 40
