@@ -25,7 +25,11 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (inputType == InputType.LocalKeyboard) axis = MovementAxis();
+        if (inputType == InputType.LocalKeyboard)
+        {
+            axis = MovementAxis();
+            buttonAxis = MovementButtons();
+        }
         else if (inputType == InputType.LocalController)
         {
             axis = ControllerAxis();
@@ -42,18 +46,22 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    private Vector4 MovementButtons()
+    {
+        Vector4 buttonAxis = Vector4.zero;
+        if (Input.GetKey(KeyCode.Space)) buttonAxis.x = 1;
+        else if (!Input.GetKey(KeyCode.Space)) buttonAxis.x = 0;
+
+        buttonAxis.x = Mathf.Clamp(buttonAxis.x, -1f, 1f);
+
+        return buttonAxis;
+    }
     private Vector2 MovementAxis()
     {
         Vector2 inputAxis = Vector2.zero;
         if (Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) inputAxis.x = -1;
         if (Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A)) inputAxis.x = 1;
         if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) || (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))) inputAxis.x = 0;
-
-        if (Input.GetKey(KeyCode.Space)) inputAxis.y = 1;
-        else if (!Input.GetKey(KeyCode.Space)) inputAxis.y = 0;
-
-        inputAxis.x = Mathf.Clamp(inputAxis.x, -1f, 1f);
-        inputAxis.y = Mathf.Clamp(inputAxis.y, -1f, 1f);
 
         return inputAxis;
     }

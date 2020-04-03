@@ -95,14 +95,21 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        if (jumpsDone > 0)
-        {
-            if (CollLeft) velocity.x = wallJumpForce;
-            if (CollRight) velocity.x = -wallJumpForce;
-        }
-
         if (velocity.y <= 0) velocity.y = jumpForce;
         else velocity.y += jumpForce;
+        if (jumpsDone > 0)
+        {
+            if (CollLeft)
+            {
+                velocity.x = wallJumpForce;
+                return;
+            }
+            if (CollRight)
+            {
+                velocity.x = -wallJumpForce;
+                return;
+            }
+        }
 
         jumpsDone += 1;
     }
