@@ -5833,7 +5833,7 @@ PrefabInstance:
     - target: {fileID: 8690475066354871602, guid: 9614af98f582f7c4daf714802441d6e2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.74
+      value: 22.64
       objectReference: {fileID: 0}
     - target: {fileID: 8690475066354871602, guid: 9614af98f582f7c4daf714802441d6e2,
         type: 3}
@@ -25103,8 +25103,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 1.2032012
+  m_UseAutoMass: 0
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -26635,7 +26635,7 @@ GameObject:
   - component: {fileID: 1848001559}
   - component: {fileID: 1848001560}
   m_Layer: 0
-  m_Name: Floor (3)
+  m_Name: Roof2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26668,7 +26668,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -5.935095, y: -0.05148077}
+  m_Offset: {x: -13.856346, y: -0.05148077}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -26679,7 +26679,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 54.514423, y: 0.89703846}
+  m_Size: {x: 70.35692, y: 0.89703846}
   m_EdgeRadius: 0
 --- !u!1001 &1848797976
 PrefabInstance:
@@ -29229,6 +29229,8 @@ MonoBehaviour:
   CollDown: 0
   maxJumps: 2
   velocity: {x: 0, y: 0}
+  dashSpeed: 20
+  dashFriction: 0.6
   maxMovementSpeed: 6
   accelerationSpeed: 20
   groundDecelerationSpeed: 40

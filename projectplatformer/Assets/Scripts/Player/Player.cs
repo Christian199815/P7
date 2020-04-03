@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
     private int jumpsDone;
 
     public Vector2 velocity;
+    private float dashVelocity;
+
+    public float dashSpeed;
+    public float dashFriction;
 
     public float maxMovementSpeed;
     public float accelerationSpeed;
@@ -33,7 +37,8 @@ public class Player : MonoBehaviour
     public Vector2 inputAxis = Vector2.zero;
     public Vector4 buttonAxis = Vector4.zero;
 
-    private bool singleInput;
+    private bool singleInputJump;
+    private bool singleInputDash;
 
     private InputManager iMan;
 
@@ -64,9 +69,6 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        
-
-
         if (pause)
         {
             if (iMan.axis != Vector2.zero)
@@ -81,17 +83,48 @@ public class Player : MonoBehaviour
 
         Movement();
 
-        if (buttonAxis.x == 1 && singleInput && jumpsDone < maxJumps && movementEnabled)
+        if (buttonAxis.x == 1 && singleInputJump && jumpsDone < maxJumps && movementEnabled)
         {
-            singleInput = false;
+            singleInputJump = false;
             Jump();
         }
-        if (buttonAxis.x != 1) singleInput = true;
+        if (buttonAxis.x != 1) singleInputJump = true;
 
 
-        transform.Translate(velocity * Time.deltaTime);
+        if (buttonAxis.y == 1 && singleInputDash && movementEnabled && dashVelocity == 0)
+        {
+            singleInputDash = false;
+            Dash();
+        }
+        if (buttonAxis.y != 1) singleInputDash = true;
+
+        transform.Translate(new Vector2(velocity.x + dashVelocity, velocity.y) * Time.deltaTime);
         RayCast();
         if (CollDown) jumpsDone = 0;
+    }
+
+    private void Dash()
+    {
+        if (velocity.x > 0) dashVelocity = dashSpeed;
+        if (velocity.x < 0) dashVelocity = -dashSpeed;
+        
+        if (velocity.x != 0)
+            StartCoroutine(DashController());
+    }
+
+    private IEnumerator DashController()
+    {
+        while(dashVelocity != 0)
+        {
+            yield return null;
+            if (dashVelocity < 0) dashVelocity += dashFriction;
+            if (dashVelocity > 0) dashVelocity -= dashFriction;
+            if (dashVelocity >= -dashFriction / 2 && dashVelocity <= dashFriction / 2)
+            {
+                dashVelocity = 0;
+            }
+        }
+
     }
 
     private void Jump()
