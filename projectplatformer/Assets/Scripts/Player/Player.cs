@@ -40,15 +40,20 @@ public class Player : MonoBehaviour
 
     private bool pause = false;
 
+    public bool isSwinging;
+    public Vector2 ropeHook;
+    public float swingForce = 4f;
+    private Rigidbody2D rb;
+    private bool isJumping;
+    private float jumpInput;
+    private float horizontalInput;
+
     void Start()
     {
         pause = true;
         iMan = FindObjectOfType<InputManager>();
     }
-    public bool isSwinging;
-    public Vector2 ropeHook;
-    public float swingForce = 4f;
-    private Rigidbody2D rb;
+   
 
     private void Awake()
     {
@@ -57,6 +62,10 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        jumpInput = iMan.buttonAxis.x;
+        horizontalInput = iMan.axis.x; 
+
+
         if (pause)
         {
             if (iMan.axis != Vector2.zero)
@@ -152,12 +161,12 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-
+       
     }
 
     public void Grappling()
     {
-        if(inputAxis.x < 0f || inputAxis.x > 0f)
+        if(horizontalInput < 0f || horizontalInput > 0f)
         {
             if (isSwinging)
             {
@@ -178,6 +187,12 @@ public class Player : MonoBehaviour
 
                 var force = perpendicularDirection * swingForce;
                 rb.AddForce(force, ForceMode2D.Force);
+            }
+
+            isJumping = jumpInput > 0f;
+            if (isJumping)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
 
         }
