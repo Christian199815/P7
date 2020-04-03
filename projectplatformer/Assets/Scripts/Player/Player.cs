@@ -18,7 +18,9 @@ public class Player : MonoBehaviour
     private int jumpsDone;
 
     public Vector2 velocity;
+    private float dashVelocity;
 
+    public float dashSpeed;
     public float maxMovementSpeed;
     public float accelerationSpeed;
     public float groundDecelerationSpeed;
@@ -79,7 +81,7 @@ public class Player : MonoBehaviour
         if (buttonAxis.x != 1) singleInput = true;
 
 
-        transform.Translate(velocity * Time.deltaTime);
+        transform.Translate(new Vector2(velocity.x + dashVelocity, velocity.y) * Time.deltaTime);
         RayCast();
         if (CollDown) jumpsDone = 0;
     }
