@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     private bool CollUp;
     private bool CollRight;
+    //groundcheck
     public bool CollDown;
     private bool CollLeft;
 
@@ -40,13 +41,14 @@ public class Player : MonoBehaviour
 
     private bool pause = false;
 
+    //for Grappling
     public bool isSwinging;
-    public Vector2 ropeHook;
-    public float swingForce = 4f;
     private Rigidbody2D rb;
     private bool isJumping;
-    private float jumpInput;
-    private float horizontalInput;
+    public Vector2 ropeHook;
+    public float swingForce = 4f;
+
+    
 
     void Start()
     {
@@ -62,8 +64,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        jumpInput = iMan.buttonAxis.x;
-        horizontalInput = iMan.axis.x; 
+        
 
 
         if (pause)
@@ -168,26 +169,26 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-       
+        Grappling();
     }
 
     public void Grappling()
     {
-        if(horizontalInput < 0f || horizontalInput > 0f)
+        if(iMan.axis.x < 0f || iMan.axis.x > 0f)
         {
             if (isSwinging)
             {
-                var playerToHookDirection = (ropeHook - (Vector2)transform.position).normalized;
+                var playertoHookDirection = (ropeHook - (Vector2)transform.position).normalized;
                 Vector2 perpendicularDirection;
-                if (inputAxis.x < 0)
+                if(iMan.axis.x < 0)
                 {
-                    perpendicularDirection = new Vector2(-playerToHookDirection.y, playerToHookDirection.x);
+                    perpendicularDirection = new Vector2(-playertoHookDirection.y, playertoHookDirection.x);
                     var leftPerpPos = (Vector2)transform.position - perpendicularDirection * -2f;
                     Debug.DrawLine(transform.position, leftPerpPos, Color.green, 0f);
                 }
                 else
                 {
-                    perpendicularDirection = new Vector2(playerToHookDirection.y, -playerToHookDirection.x);
+                    perpendicularDirection = new Vector2(playertoHookDirection.y, -playertoHookDirection.x);
                     var rightPerpPos = (Vector2)transform.position + perpendicularDirection * 2f;
                     Debug.DrawLine(transform.position, rightPerpPos, Color.green, 0f);
                 }
@@ -195,13 +196,26 @@ public class Player : MonoBehaviour
                 var force = perpendicularDirection * swingForce;
                 rb.AddForce(force, ForceMode2D.Force);
             }
+            else
+            {
+                if (!CollDown)
+                {
+                    var groundforce = maxMovementSpeed * 2f;
+                    rb.AddForce(new Vector2((iMan.axis.x * groundforce - rb.velocity.x) * groundforce, 0));
+                    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
+                }
+            }
+        }
 
-            isJumping = jumpInput > 0f;
+        if (!isSwinging)
+        {
+            if (!CollDown) return;
+
+            isJumping = iMan.axis.y > 0f;
             if (isJumping)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
-
         }
     }
 
