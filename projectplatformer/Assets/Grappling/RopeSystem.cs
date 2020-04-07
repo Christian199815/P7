@@ -44,6 +44,7 @@ public class RopeSystem : MonoBehaviour
 
     private void Update()
     {
+        //mouse pos wordt schiet kant, shooting script niek
         var worldMousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f));
         var facingDirection = worldMousePosition - transform.position;
         var aimAngle = Mathf.Atan2(facingDirection.y, facingDirection.x);
@@ -114,7 +115,7 @@ public class RopeSystem : MonoBehaviour
 
     private void HandleInput(Vector2 aimDirection)
     {
-        //veranderen naar de knop in de mobile controller
+        //veranderen naar de knop in de mobile controller, niek shooting script
         if (Input.GetMouseButton(0))
         {
             if (ropeAttached) return;
@@ -142,6 +143,7 @@ public class RopeSystem : MonoBehaviour
             }
         }
 
+        // hetzelfde maar dan anders
         if (Input.GetMouseButton(1))
         {
             ResetRope();
@@ -225,12 +227,13 @@ public class RopeSystem : MonoBehaviour
 
     private void HandleRopeLength()
     {
+        
         //niek zn vertical inputmanager
-        if(Input.GetAxis("Vertical") >= 1f && ropeAttached && !isColliding)
+        if(iMan.axis.y >= 1f && ropeAttached && !isColliding)
         {
             ropeJoint.distance -= Time.deltaTime * climbSpeed;
         }
-        else if(Input.GetAxis("Vertical") < 0f && ropeAttached)
+        else if(iMan.axis.y < 0f && ropeAttached)
         {
             ropeJoint.distance += Time.deltaTime * climbSpeed;
         }
