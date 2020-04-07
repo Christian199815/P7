@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -96,7 +96,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 356afc738ca13c443a4efe9f5835b3c6,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -5007,11 +5008,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 980181099}
     m_Modifications:
-    - target: {fileID: 850631692800174892, guid: 9614af98f582f7c4daf714802441d6e2,
-        type: 3}
-      propertyPath: m_Name
-      value: floor_tile_walkable_seetrough (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 8690475066354871602, guid: 9614af98f582f7c4daf714802441d6e2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5066,6 +5062,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 850631692800174892, guid: 9614af98f582f7c4daf714802441d6e2,
+        type: 3}
+      propertyPath: m_Name
+      value: floor_tile_walkable_seetrough (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9614af98f582f7c4daf714802441d6e2, type: 3}
@@ -5897,11 +5898,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 980181099}
     m_Modifications:
-    - target: {fileID: 850631692800174892, guid: 9614af98f582f7c4daf714802441d6e2,
-        type: 3}
-      propertyPath: m_Name
-      value: floor_tile_walkable_seetrough (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 8690475066354871602, guid: 9614af98f582f7c4daf714802441d6e2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5956,6 +5952,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 850631692800174892, guid: 9614af98f582f7c4daf714802441d6e2,
+        type: 3}
+      propertyPath: m_Name
+      value: floor_tile_walkable_seetrough (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9614af98f582f7c4daf714802441d6e2, type: 3}
@@ -33678,11 +33679,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 980181099}
     m_Modifications:
-    - target: {fileID: 850631692800174892, guid: 9614af98f582f7c4daf714802441d6e2,
-        type: 3}
-      propertyPath: m_Name
-      value: floor_tile_walkable_seetrough
-      objectReference: {fileID: 0}
     - target: {fileID: 8690475066354871602, guid: 9614af98f582f7c4daf714802441d6e2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33737,6 +33733,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 850631692800174892, guid: 9614af98f582f7c4daf714802441d6e2,
+        type: 3}
+      propertyPath: m_Name
+      value: floor_tile_walkable_seetrough
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9614af98f582f7c4daf714802441d6e2, type: 3}
@@ -47283,11 +47284,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 980181099}
     m_Modifications:
-    - target: {fileID: 850631692800174892, guid: 9614af98f582f7c4daf714802441d6e2,
-        type: 3}
-      propertyPath: m_Name
-      value: floor_tile_walkable_seetrough (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 8690475066354871602, guid: 9614af98f582f7c4daf714802441d6e2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -47342,6 +47338,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 850631692800174892, guid: 9614af98f582f7c4daf714802441d6e2,
+        type: 3}
+      propertyPath: m_Name
+      value: floor_tile_walkable_seetrough (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9614af98f582f7c4daf714802441d6e2, type: 3}
