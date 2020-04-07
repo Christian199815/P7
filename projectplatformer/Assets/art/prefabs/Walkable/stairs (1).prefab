@@ -11,6 +11,14 @@ GameObject:
   - component: {fileID: 6921507026607111842}
   - component: {fileID: 8811239300434322012}
   - component: {fileID: 2881257001969223306}
+  - component: {fileID: 8139452553215207370}
+  - component: {fileID: 8727075004184270847}
+  - component: {fileID: 3990325599828337395}
+  - component: {fileID: 5402433775477490229}
+  - component: {fileID: 1662107451630282655}
+  - component: {fileID: 6205485357221840462}
+  - component: {fileID: 7351164381119010513}
+  - component: {fileID: 5535955464993595543}
   m_Layer: 0
   m_Name: stairs (1)
   m_TagString: Untagged
@@ -25,9 +33,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4622591602284486440}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -78,3 +86,107 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8139452553215207370
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4622591602284486440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 63.697937, y: 40.268433, z: 387.1211}
+  m_Center: {x: -178.4754, y: -118.11511, z: 0.000030517578}
+--- !u!65 &8727075004184270847
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4622591602284486440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 56.794098, y: 39.44452, z: 387.1211}
+  m_Center: {x: -123.66086, y: -85.98239, z: 0.000030517578}
+--- !u!65 &3990325599828337395
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4622591602284486440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 51.93994, y: 30.054012, z: 387.1211}
+  m_Center: {x: -75.84152, y: -48.5549, z: 0.000030517578}
+--- !u!65 &5402433775477490229
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4622591602284486440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 59.012955, y: 42.968018, z: 387.1211}
+  m_Center: {x: -24.479408, y: -19.8905, z: 0.000030517578}
+--- !u!65 &1662107451630282655
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4622591602284486440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 53.00496, y: 39.22058, z: 387.1211}
+  m_Center: {x: 32.413124, y: 9.770145, z: 0.000030517578}
+--- !u!65 &6205485357221840462
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4622591602284486440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 50.95494, y: 34.425545, z: 387.1211}
+  m_Center: {x: 84.165794, y: 42.01703, z: 0.000030517578}
+--- !u!65 &7351164381119010513
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4622591602284486440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 54.40753, y: 36.63867, z: 387.1211}
+  m_Center: {x: 133.27008, y: 75.4715, z: 0.000030517578}
+--- !u!65 &5535955464993595543
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4622591602284486440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 54.19496, y: 39.531616, z: 387.1211}
+  m_Center: {x: 183.22708, y: 110.36572, z: 0.000030517578}

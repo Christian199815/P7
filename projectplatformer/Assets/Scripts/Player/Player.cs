@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
 
     private bool CollUp;
     private bool CollRight;
-    //groundcheck
     public bool CollDown;
     private bool CollLeft;
 
@@ -19,10 +18,6 @@ public class Player : MonoBehaviour
     private int jumpsDone;
 
     public Vector2 velocity;
-    private float dashVelocity;
-
-    public float dashSpeed;
-    public float dashFriction;
 
     public float maxMovementSpeed;
     public float accelerationSpeed;
@@ -35,126 +30,50 @@ public class Player : MonoBehaviour
     public float wallJumpForce;
 
     public Vector2 inputAxis = Vector2.zero;
-    public Vector4 buttonAxis = Vector4.zero;
 
-    private bool singleInputJump;
-    private bool singleInputDash;
-
-    private InputManager iMan;
-
-    public bool movementEnabled = true;
-
-    private bool pause = false;
-
-    //for Grappling
-    public bool isSwinging;
-    private Rigidbody2D rb;
-    private bool isJumping;
-    public Vector2 ropeHook;
-    public float swingForce = 4f;
-
-    
+    private bool singleInput;
 
     void Start()
     {
-        pause = true;
-        iMan = FindObjectOfType<InputManager>();
-    }
-   
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
+        
     }
 
     private void Update()
-    {
-        if (pause)
-        {
-            if (iMan.axis != Vector2.zero)
-            {
-                pause = false;
-            }
-            return;
-        }
-        inputAxis = iMan.axis;
-        buttonAxis = iMan.buttonAxis;
-
-
+    { 
+        inputAxis = FindObjectOfType<InputManager>().axis;
+        
         Movement();
 
-        if (buttonAxis.x == 1 && singleInputJump && jumpsDone < maxJumps && movementEnabled)
+        if (inputAxis.y == 1 && singleInput && jumpsDone < maxJumps)
         {
-            singleInputJump = false;
+            singleInput = false;
             Jump();
         }
-        if (buttonAxis.x != 1) singleInputJump = true;
+        if (inputAxis.y != 1) singleInput = true;
+        
 
-
-        if (buttonAxis.y == 1 && singleInputDash && movementEnabled && dashVelocity == 0)
-        {
-            singleInputDash = false;
-            Dash();
-        }
-        if (buttonAxis.y != 1) singleInputDash = true;
-
-        transform.Translate(new Vector2(velocity.x + dashVelocity, velocity.y) * Time.deltaTime);
+        transform.Translate(velocity * Time.deltaTime);
         RayCast();
         if (CollDown) jumpsDone = 0;
     }
 
-    private void Dash()
-    {
-        if (velocity.x > 0) dashVelocity = dashSpeed;
-        if (velocity.x < 0) dashVelocity = -dashSpeed;
-        
-        if (velocity.x != 0)
-            StartCoroutine(DashController());
-    }
-
-    private IEnumerator DashController()
-    {
-        while(dashVelocity != 0)
-        {
-            yield return null;
-            if (dashVelocity < 0) dashVelocity += dashFriction;
-            if (dashVelocity > 0) dashVelocity -= dashFriction;
-            if (dashVelocity >= -dashFriction / 2 && dashVelocity <= dashFriction / 2)
-            {
-                dashVelocity = 0;
-            }
-        }
-
-    }
-
     private void Jump()
     {
-        if (velocity.y <= 0) velocity.y = jumpForce;
-        else velocity.y += jumpForce;
         if (jumpsDone > 0)
         {
-            if (CollLeft)
-            {
-                velocity.x = wallJumpForce;
-                return;
-            }
-            if (CollRight)
-            {
-                velocity.x = -wallJumpForce;
-                return;
-            }
+            if (CollLeft) velocity.x = wallJumpForce;
+            if (CollRight) velocity.x = -wallJumpForce;
         }
+        
+        if (velocity.y <= 0) velocity.y = jumpForce;
+        else velocity.y += jumpForce;
 
         jumpsDone += 1;
     }
 
 
     private void Movement()
-    {
-        if (!movementEnabled)
-        {
-            inputAxis = Vector2.zero;
-        }
+    { 
         if ((velocity.x > 0 && CollRight) || velocity.x < 0 && CollLeft)
         {
             velocity.x = 0;
@@ -182,7 +101,6 @@ public class Player : MonoBehaviour
                 if (velocity.x <= -airDecelerationSpeed * Time.deltaTime / 2) velocity.x += airDecelerationSpeed * Time.deltaTime;
             }
         }
-
         if (inputAxis.x > 0)
         {
             if (velocity.x <= -groundDecelerationSpeed * Time.deltaTime) velocity.x += groundDecelerationSpeed * Time.deltaTime;
@@ -193,64 +111,9 @@ public class Player : MonoBehaviour
             if (velocity.x >= groundDecelerationSpeed * Time.deltaTime) velocity.x -= groundDecelerationSpeed * Time.deltaTime;
             else if (velocity.x >= -maxMovementSpeed + accelerationSpeed * Time.deltaTime) velocity.x -= accelerationSpeed * Time.deltaTime;
         }
-
-        if (!movementEnabled)
-        {
-            inputAxis = iMan.axis;
-        }
     }
 
-    void FixedUpdate()
-    {
-        Grappling();
-    }
 
-    public void Grappling()
-    {
-        if(iMan.axis.x < 0f || iMan.axis.x > 0f)
-        {
-            if (isSwinging)
-            {
-                var playertoHookDirection = (ropeHook - (Vector2)transform.position).normalized;
-                Vector2 perpendicularDirection;
-                if(iMan.axis.x < 0)
-                {
-                    perpendicularDirection = new Vector2(-playertoHookDirection.y, playertoHookDirection.x);
-                    var leftPerpPos = (Vector2)transform.position - perpendicularDirection * -2f;
-                    Debug.DrawLine(transform.position, leftPerpPos, Color.green, 0f);
-                }
-                else
-                {
-                    perpendicularDirection = new Vector2(playertoHookDirection.y, -playertoHookDirection.x);
-                    var rightPerpPos = (Vector2)transform.position + perpendicularDirection * 2f;
-                    Debug.DrawLine(transform.position, rightPerpPos, Color.green, 0f);
-                }
-
-                var force = perpendicularDirection * swingForce;
-                rb.AddForce(force, ForceMode2D.Force);
-            }
-            else
-            {
-                if (!CollDown)
-                {
-                    var groundforce = maxMovementSpeed * 2f;
-                    rb.AddForce(new Vector2((iMan.axis.x * groundforce - rb.velocity.x) * groundforce, 0));
-                    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
-                }
-            }
-        }
-
-        if (!isSwinging)
-        {
-            if (!CollDown) return;
-
-            isJumping = iMan.axis.y > 0f;
-            if (isJumping)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            }
-        }
-    }
 
 
     #region Raycasts
@@ -288,7 +151,7 @@ public class Player : MonoBehaviour
             if (velocity.x > 0) transform.position = new Vector2(h.point.x - transform.lossyScale.x / 2, transform.position.y);
         }
 
-
+        
     }
 
     private void RayCastLeft()
