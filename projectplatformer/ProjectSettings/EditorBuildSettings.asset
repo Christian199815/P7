@@ -8,10 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ControllerConnection.unity
     guid: 2cfec0ab54e36de428c883150c80b92b
-  - enabled: 1
-    path: Assets/Scenes/Home.unity
-    guid: 5669b63523504834ebe9a9e2effadd23
-  - enabled: 1
-    path: Assets/Scenes/BlockUpHomeWorld.unity
-    guid: 6bd201b6e874d4b428cf6630b9908f5f
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
