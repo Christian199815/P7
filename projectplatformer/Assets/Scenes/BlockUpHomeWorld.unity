@@ -21540,6 +21540,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2bdab861fe67ad3438e21b2641698f36, type: 2}
+    - target: {fileID: 1618999659119080179, guid: 87fba928dfa894643a9fded889d122dd,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618999659119080179, guid: 87fba928dfa894643a9fded889d122dd,
+        type: 3}
+      propertyPath: m_SpotAngle
+      value: 63.084366
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618999659119080179, guid: 87fba928dfa894643a9fded889d122dd,
+        type: 3}
+      propertyPath: m_Range
+      value: 11.625716
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87fba928dfa894643a9fded889d122dd, type: 3}
 --- !u!4 &949654219 stripped
