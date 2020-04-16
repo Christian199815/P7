@@ -6,6 +6,8 @@ public class LiftCollision : MonoBehaviour
 {
     private Vector3 LiftEndPos;
     public float LiftDownSpeed;
+    public GameObject Player;
+    public int MinLifPos;
 
     public bool PlayerDetected = false;
 
@@ -17,21 +19,20 @@ public class LiftCollision : MonoBehaviour
 
     private void Update()
     {
+        PlayerOnLift();
+
         if (PlayerDetected == true)
         {
              transform.position = Vector3.Lerp(transform.position, LiftEndPos, (LiftDownSpeed * Time.deltaTime));
         }
 
-        if(transform.position == LiftEndPos)
-        {
-            PlayerDetected = false;
-        }
+        
        
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void PlayerOnLift()
     {
-        if (collision.collider.CompareTag("Player"))
+        if(Player.transform.position.x >= MinLifPos)
         {
             PlayerDetected = true;
         }

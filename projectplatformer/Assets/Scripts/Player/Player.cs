@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
     private bool singleInputJump;
     private bool singleInputDash;
 
+    public GameObject Character;
+
     private InputManager iMan;
 
     public bool movementEnabled = true;
@@ -101,6 +103,20 @@ public class Player : MonoBehaviour
         transform.Translate(new Vector2(velocity.x + dashVelocity, velocity.y) * Time.deltaTime);
         RayCast();
         if (CollDown) jumpsDone = 0;
+
+        //PlayerTurn();
+    }
+
+    private void PlayerTurn()
+    {
+        if(iMan.axis.x > 0)
+        {
+            Character.transform.rotation = new Quaternion(0, 0, 0, 0);
+        }
+        else if(iMan.axis.x < 0)
+        {
+            Character.transform.rotation = new Quaternion(0, 45, 0, 0);
+        } 
     }
 
     private void Dash()

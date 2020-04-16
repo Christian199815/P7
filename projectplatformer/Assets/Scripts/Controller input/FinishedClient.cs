@@ -161,7 +161,7 @@ public class FinishedClient : MonoBehaviour
 
     private void ControllerConnected()
     {
-        SceneManager.LoadSceneAsync("BlockUpHomeWorld");
+        SceneManager.LoadSceneAsync(gameSceneName);
     }
 
     private void ManageData(string data)
