@@ -78,6 +78,7 @@ public class FinishedClient : MonoBehaviour
             Client.Connect(ipAd, port);
             TcpClient foundClient = Client;
             StartCoroutine(ListenServerMessages());
+            GetComponent<InputManager>().SwitchToHomeScene();
         }
         catch
         {

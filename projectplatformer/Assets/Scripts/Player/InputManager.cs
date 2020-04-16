@@ -87,8 +87,20 @@ public class InputManager : MonoBehaviour
         }   
     }
 
+    public void SwitchToHomeScene()
+    {
+        GetComponent<FinishedClient>().SendMessageToServer("HOME");
+        SceneManager.LoadSceneAsync("Home");
+    }
+
     public void SwitchToGameScene()
     {
+        GetComponent<FinishedClient>().SendMessageToServer("GAME");
         SceneManager.LoadSceneAsync("BlockUpHomeWorld");
+    }
+
+    public void SendGameScreenMessage()
+    {
+        GetComponent<FinishedClient>()?.SendMessageToServer("GAME");
     }
 }

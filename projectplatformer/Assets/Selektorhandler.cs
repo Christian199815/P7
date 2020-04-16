@@ -30,7 +30,7 @@ public class Selektorhandler : MonoBehaviour
         //druk op knop en plaatje is voor de start tekst
         if(Iman.buttonAxis.x == 1 && Selektor.transform.position.y == 32)
         {
-            SceneManager.LoadScene(2);
+            GetComponent<InputManager>().SwitchToGameScene();
         }
         //druk op de knop en plaatje is voor de quit tekst
         else if(Iman.buttonAxis.x == 1 && Selektor.transform.position.y == -173)

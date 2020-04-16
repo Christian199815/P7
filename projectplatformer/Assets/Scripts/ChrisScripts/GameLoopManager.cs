@@ -24,6 +24,7 @@ public class GameLoopManager : MonoBehaviour
 
     void EndGame()
     {
+        GetComponent<FinishedClient>().SendMessageToServer("HOME");
         SceneManager.LoadScene("Home");
     }
 }

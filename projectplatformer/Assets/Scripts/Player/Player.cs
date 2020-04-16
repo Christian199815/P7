@@ -5,9 +5,6 @@ using UnityEngine;
 //[RequireComponent(typeof(BoxCollider2D))]
 public class Player : MonoBehaviour
 {
-    public KeyCode walkLeftKey;
-    public KeyCode walkRightKey;
-    public KeyCode jumpKey;
 
     private bool CollUp;
     private bool CollRight;
@@ -60,7 +57,14 @@ public class Player : MonoBehaviour
     void Start()
     {
         pause = true;
+        StartCoroutine(Timer());
+    }
+
+    private IEnumerator Timer()
+    {
+        yield return new WaitForSeconds(1);
         iMan = FindObjectOfType<InputManager>();
+        pause = false;
     }
    
 
@@ -71,40 +75,39 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (pause)
+        if(iMan != null)
         {
-            if (iMan.axis != Vector2.zero)
+            inputAxis = iMan.axis;
+            buttonAxis = iMan.buttonAxis;
+
+
+            Movement();
+
+            
+            if (buttonAxis.x == 1 && iMan.axis.y == 0 && singleInputJump && jumpsDone < maxJumps && movementEnabled)
             {
-                pause = false;
+                singleInputJump = false;
+                Jump();
             }
-            return;
+            if (buttonAxis.x == 0) singleInputJump = true;
+
+
+            if (buttonAxis.y == 1 && singleInputDash && movementEnabled && dashVelocity == 0)
+            {
+                singleInputDash = false;
+                Dash();
+            }
+            if (buttonAxis.y != 1) singleInputDash = true;
+
+          
+
+            transform.Translate(new Vector2(velocity.x + dashVelocity, velocity.y) * Time.deltaTime);
+            RayCast();
+            if (CollDown) jumpsDone = 0;
+
+            //PlayerTurn();
         }
-        inputAxis = iMan.axis;
-        buttonAxis = iMan.buttonAxis;
 
-
-        Movement();
-
-        if (buttonAxis.x == 1 && singleInputJump && jumpsDone < maxJumps && movementEnabled)
-        {
-            singleInputJump = false;
-            Jump();
-        }
-        if (buttonAxis.x != 1) singleInputJump = true;
-
-
-        if (buttonAxis.y == 1 && singleInputDash && movementEnabled && dashVelocity == 0)
-        {
-            singleInputDash = false;
-            Dash();
-        }
-        if (buttonAxis.y != 1) singleInputDash = true;
-
-        transform.Translate(new Vector2(velocity.x + dashVelocity, velocity.y) * Time.deltaTime);
-        RayCast();
-        if (CollDown) jumpsDone = 0;
-
-        //PlayerTurn();
     }
 
     private void PlayerTurn()
@@ -218,7 +221,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        Grappling();
+        //if (iMan != null) Grappling();
     }
 
     public void Grappling()

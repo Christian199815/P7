@@ -12,6 +12,7 @@ public class FinishedClient : MonoBehaviour
 {
     public TextMeshProUGUI status;
     public GameObject connectionPanel;
+    public GameObject controllerHomeScreenPanel;
     #region Public Variables
     [Header("Network")]
     public string ipAdress;
@@ -45,6 +46,7 @@ public class FinishedClient : MonoBehaviour
                 yield return null;
             }
             connectionPanel.SetActive(false);
+            controllerHomeScreenPanel.SetActive(true);
             while (PairedToGame)
             {
                 yield return null;
@@ -180,6 +182,16 @@ public class FinishedClient : MonoBehaviour
             CloseServer();
             status.text = "Disconnected. Restart app and try to reconnect.";
         }
+        if (this.receivedMessage == "HOME")
+        {
+            controllerHomeScreenPanel.SetActive(true);
+        }
+        if (this.receivedMessage == "GAME")
+        {
+            controllerHomeScreenPanel.SetActive(false);
+        }
+
+        print(receivedMessage);
         //Commands toevoegen dependent op de message (voorbeeld bovenstaand)
     }
 
