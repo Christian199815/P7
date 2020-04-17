@@ -6,34 +6,47 @@ using UnityEngine.SceneManagement;
 
 public class Selektorhandler : MonoBehaviour
 {
-    public Image Selektor;
+    public Image Selector;
     private int numStart = 32;
     private int numQuit = -173;
 
+    private int SelektorID;
+
     public InputManager Iman;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        StartCoroutine(Timer());
     }
+
+    private IEnumerator Timer()
+    {
+        yield return new WaitForSeconds(1);
+        Iman = FindObjectOfType<InputManager>();
+    }
+
 
     // Update is called once per frame
     void Update()
     {
         MoveSelektor();
         select();
+
+       
     }
 
     private void select()
     {
+        if (Iman == null)
+            return;
         //druk op knop en plaatje is voor de start tekst
-        if(Iman.buttonAxis.x == 1 && Selektor.transform.position.y == 32)
+        if(Iman.buttonAxis.x == 1 && SelektorID == 0)
         {
-            GetComponent<InputManager>().SwitchToGameScene();
+            print("buttonpressed");
+            SceneManager.LoadScene(2);
         }
         //druk op de knop en plaatje is voor de quit tekst
-        else if(Iman.buttonAxis.x == 1 && Selektor.transform.position.y == -173)
+        else if(Iman.buttonAxis.x == 1 && SelektorID == 1)
         {
             Application.Quit();
         }
@@ -41,13 +54,18 @@ public class Selektorhandler : MonoBehaviour
 
     private void MoveSelektor()
     {
-        if(Iman.axis.y == 1 && Selektor.transform.position.y == -173)
+        if (Iman == null)
+            return;
+        if(Iman.axis.y >= 1 && SelektorID == 1)
         {
-            Selektor.transform.position = new Vector3(67, 32, 0);
+            SelektorID = 0;
+            Selector.rectTransform.localPosition = new Vector3(-940, 32, 0);
         }
-        else if(Iman.axis.y == -1 && Selektor.transform.position.y == 32)
+        else if(Iman.axis.y <= -1 && SelektorID == 0)
         {
-            Selektor.transform.position = new Vector3(67, -173, 0);
+            SelektorID = 1;
+            Selector.rectTransform.localPosition = new Vector3(-940, -173, 0);
+           
         }
     }
 

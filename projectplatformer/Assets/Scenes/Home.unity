@@ -357,7 +357,6 @@ GameObject:
   m_Component:
   - component: {fileID: 534763796}
   - component: {fileID: 534763795}
-  - component: {fileID: 534763794}
   m_Layer: 0
   m_Name: SeleketorHandler
   m_TagString: Untagged
@@ -365,21 +364,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &534763794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534763793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e2c7efc0d8f983488834e731cd480a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputType: 0
-  axis: {x: 0, y: 0}
-  buttonAxis: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &534763795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,8 +376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3b1fbd4cf012d045ab15ff289aff81d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Selektor: {fileID: 669164350}
-  Iman: {fileID: 534763794}
+  Selector: {fileID: 669164350}
+  Iman: {fileID: 0}
 --- !u!4 &534763796
 Transform:
   m_ObjectHideFlags: 0
