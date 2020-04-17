@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
             inputAxis = iMan.axis;
             buttonAxis = iMan.buttonAxis;
 
+            CharacterRotation();
 
             Movement();
 
@@ -110,16 +111,22 @@ public class Player : MonoBehaviour
 
     }
 
-    private void PlayerTurn()
+    private void CharacterRotation()
     {
-        if(iMan.axis.x > 0)
+        if (velocity.x < -accelerationSpeed * Time.deltaTime)
         {
-            Character.transform.rotation = new Quaternion(0, 0, 0, 0);
+            if (transform.GetChild(0).rotation == Quaternion.Euler(new Vector3(0, -90, 0)))
+            {
+                transform.GetChild(0).rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+            }
         }
-        else if(iMan.axis.x < 0)
+        else if (velocity.x > accelerationSpeed * Time.deltaTime)
         {
-            Character.transform.rotation = new Quaternion(0, 45, 0, 0);
-        } 
+            if (transform.GetChild(0).rotation == Quaternion.Euler(new Vector3(0, 90, 0)))
+            {
+                transform.GetChild(0).rotation = Quaternion.Euler(new Vector3(0, -90, 0));
+            }
+        }
     }
 
     private void Dash()
